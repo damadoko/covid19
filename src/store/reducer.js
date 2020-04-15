@@ -1,5 +1,6 @@
 const initialState = {
-  currentFilter: null,
+  currentPage: null,
+  totalEffectedCountry: 123,
   top3Country: [],
   hotNews: [],
 };

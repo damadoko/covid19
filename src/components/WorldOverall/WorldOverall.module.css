@@ -1,0 +1,19 @@
+.WorldOverall {
+  text-align: center;
+  padding: 1rem;
+}
+
+.Countries {
+  text-align: center;
+  border: 1px solid #cccccc;
+  padding: 1rem;
+}
+
+.Countries span {
+  font-size: 3rem;
+  color: red;
+}
+.Countries p {
+  font-weight: bold;
+  font-size: 0.75rem;
+}
