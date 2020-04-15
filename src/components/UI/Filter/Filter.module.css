@@ -1,0 +1,31 @@
+.Filter {
+  width: 50%;
+  margin: 10px auto;
+  /* border: 1px solid black; */
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #cccccc;
+  box-sizing: border-box;
+}
+
+.Filter div {
+  padding: 10px;
+  flex-basis: 100%;
+  text-align: center;
+}
+
+.Filter div:first-child {
+  border-radius: 0 0 0 10px;
+  border-right: 1px solid #cccccc;
+}
+
+.Filter div:last-child {
+  border-radius: 0 0 10px 0;
+  border-left: 1px solid #cccccc;
+}
+
+.Filter div[data-active="true"] {
+  background: #f2f2f2;
+}

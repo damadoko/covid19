@@ -7,7 +7,7 @@
   height: 70px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  background-color: #80ddff;
+  background-color: #cccccc;
   box-sizing: border-box;
 }
 
@@ -43,5 +43,5 @@
 }
 
 .Menu i[data-active="true"]::after {
-  border-top: 60px solid #ffffff;
+  border-top: 60px solid #f2f2f2;
 }

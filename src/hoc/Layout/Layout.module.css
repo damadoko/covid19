@@ -2,4 +2,6 @@
   max-width: 485px;
   margin: 70px auto;
   box-sizing: border-box;
+  background-color: #f2f2f2;
+  height: calc(100vh - 140px);
 }
