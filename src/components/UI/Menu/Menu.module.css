@@ -1,0 +1,47 @@
+.Menu {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 485px;
+  height: 70px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: #80ddff;
+  box-sizing: border-box;
+}
+
+/* .Menu div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+
+.Menu i {
+  padding: 19px;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.Menu i::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  border-top: 0px solid transparent;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  height: 0;
+  width: 70px;
+  z-index: -1;
+  transition: all 0.25s ease-in-out;
+}
+
+.Menu i:hover::after {
+  border-top: 60px solid #ffffff;
+}
+
+.Menu i[data-active="true"]::after {
+  border-top: 60px solid #ffffff;
+}

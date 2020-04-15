@@ -2,6 +2,7 @@ import React from "react";
 
 import classes from "./Layout.module.css";
 import Logo from "../../components/UI/Logo/Logo";
+import Menu from "../../components/UI/Menu/Menu";
 
 const Layout = (props) => {
   return (
@@ -9,7 +10,7 @@ const Layout = (props) => {
       <Logo />
       <p>Filter</p>
       <main>{props.children}</main>
-      <p>Menu</p>
+      <Menu />
     </div>
   );
 };
