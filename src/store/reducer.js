@@ -1,11 +1,11 @@
 const initialState = {
- currentFilter = null,
- top3Country= [],
- hotNews: []
-}
+  currentFilter: null,
+  top3Country: [],
+  hotNews: [],
+};
 
 const reducer = (state = initialState, action) => {
- return state
-}
+  return state;
+};
 
-export default reducer
+export default reducer;

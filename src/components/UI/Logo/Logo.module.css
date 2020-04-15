@@ -1,0 +1,13 @@
+.Logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d3d3d3;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.LogoImg {
+  border: none;
+}
