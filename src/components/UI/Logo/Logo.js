@@ -1,11 +1,19 @@
 import React from "react";
 import classes from "./Logo.module.css";
-import logo from "../../../assets/logo.svg";
 
 const Logo = () => {
   return (
     <div className={classes.Logo}>
-      <img className={classes.LogoImg} src={logo} alt="logo" />
+      <div>
+        <p>
+          <strong>Covid19</strong>
+        </p>
+        <p>LIVE UPDATE</p>
+      </div>
+      <div>
+        <p>STAY HOME</p>
+        <h1>COVID-19</h1>
+      </div>
     </div>
   );
 };

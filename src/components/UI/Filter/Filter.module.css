@@ -1,31 +1,45 @@
 .Filter {
-  width: 50%;
-  margin: 10px auto;
-  /* border: 1px solid black; */
-  border-radius: 0 0 10px 10px;
+  width: 100%;
+  margin: 170px auto 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  background-color: #cccccc;
-  box-sizing: border-box;
 }
 
 .Filter div {
+  font-size: 1.25rem;
   padding: 10px;
-  flex-basis: 100%;
   text-align: center;
 }
 
-.Filter div:first-child {
-  border-radius: 0 0 0 10px;
-  border-right: 1px solid #cccccc;
+.Filter div {
+  position: relative;
+  z-index: 1;
 }
 
-.Filter div:last-child {
-  border-radius: 0 0 10px 0;
-  border-left: 1px solid #cccccc;
+.Filter div::after {
+  position: absolute;
+  content: "";
+  bottom: 4px;
+  left: 0;
+  height: 4px;
+  width: 50%;
+  background-color: transparent;
+  transition: all 0.4s ease-in;
+  opacity: 0;
+}
+
+.Filter div:hover::after {
+  width: 100%;
+  opacity: 1;
+  background-color: #c43535;
 }
 
 .Filter div[data-active="true"] {
-  background: #f2f2f2;
+  font-weight: bolder;
+}
+
+.Filter div[data-active="true"]::after {
+  opacity: 1;
+  background-color: #c43535;
 }

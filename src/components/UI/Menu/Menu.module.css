@@ -17,14 +17,14 @@
   justify-content: center;
 } */
 
-.Menu i {
+.Menu div {
   padding: 19px;
   position: relative;
   z-index: 1;
   text-align: center;
 }
 
-.Menu i::after {
+.Menu div::after {
   position: absolute;
   content: "";
   top: 0;
@@ -38,10 +38,10 @@
   transition: all 0.25s ease-in-out;
 }
 
-.Menu i:hover::after {
+.Menu div:hover::after {
   border-top: 60px solid #ffffff;
 }
 
-.Menu i[data-active="true"]::after {
+.Menu div[data-active="true"]::after {
   border-top: 60px solid #f2f2f2;
 }

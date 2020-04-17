@@ -2,13 +2,13 @@ import React from "react";
 import classes from "./CountryDetail.module.css";
 
 import CountryInfo from "./CountryInfo/CountryInfo";
-// import CountryNews from "./CountryNews/CountryNews";
+import News from "../WorldOverall/News/News";
 
 const CountryDetail = () => {
   return (
     <div className={classes.CountryDetail}>
       <CountryInfo />
-      <div>News</div>
+      <News />
     </div>
   );
 };

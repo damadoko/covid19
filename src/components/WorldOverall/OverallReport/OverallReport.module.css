@@ -1,0 +1,16 @@
+.OverallReport {
+  text-align: center;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.5) 1px 2px 3px;
+}
+
+.OverallReport span {
+  font-size: 3rem;
+  color: red;
+}
+.OverallReport p {
+  font-weight: bold;
+  font-size: 0.75rem;
+}

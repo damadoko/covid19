@@ -13,4 +13,5 @@
   white-space: nowrap;
   transform: rotate(-90deg);
   align-self: center;
+  z-index: -1;
 }

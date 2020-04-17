@@ -10,42 +10,42 @@ const CountryInfo = () => {
           <p>
             <strong>100230</strong>
           </p>
-          <i class="fas fa-2x fa-globe"></i>
+          <i className="fas fa-2x fa-globe"></i>
           {/* total */}
         </div>
         <div>
           <p>
             <strong>100230</strong>
           </p>
-          <i class="fas fa-2x fa-wheelchair"></i>
+          <i className="fas fa-2x fa-wheelchair"></i>
           {/* Recovered */}
         </div>
         <div>
           <p>
             <strong>100230</strong>
           </p>
-          <i class="fas fa-2x fa-lungs-virus"></i>
+          <i className="fas fa-2x fa-lungs-virus"></i>
           {/* Active */}
         </div>
         <div>
           <p>
             <strong>100230</strong>
           </p>
-          <i class="fas fa-2x fa-grimace"></i>
+          <i className="fas fa-2x fa-grimace"></i>
           {/* Critical */}
         </div>
         <div>
           <p>
             <strong>100230</strong>
           </p>
-          <i class="fas fa-2x fa-skull-crossbones"></i>
+          <i className="fas fa-2x fa-skull-crossbones"></i>
           {/* Deaths */}
         </div>
         <div>
           <p>
             <strong>100230</strong>
           </p>
-          <i class="fas fa-2x fa-vials"></i>
+          <i className="fas fa-2x fa-vials"></i>
           {/* test */}
         </div>
       </div>
