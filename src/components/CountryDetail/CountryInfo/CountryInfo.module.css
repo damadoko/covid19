@@ -1,0 +1,21 @@
+.CountryInfo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.CountryInfo > div {
+  text-align: center;
+  padding: 1rem;
+}
+
+.CountryInfo > div i {
+  position: relative;
+  color: #cccccc;
+  margin: 0.5rem;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.title {
+  text-align: center;
+}

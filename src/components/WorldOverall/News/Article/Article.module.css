@@ -15,13 +15,23 @@
 .Article a {
   grid-area: title;
   padding: 0.5rem;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .Article p {
   grid-area: des;
+  max-height: 100px;
+  overflow-y: auto;
 }
-
+::-webkit-scrollbar {
+  width: 0px; /* Remove scrollbar space */
+  /* background: transparent; Optional: just make scrollbar invisible */
+}
 .Article img {
+  max-width: 200px;
   max-width: 200px;
   grid-area: img;
 }
