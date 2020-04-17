@@ -1,0 +1,27 @@
+.Article {
+  display: grid;
+  grid-template-areas:
+    "title title title "
+    "des des img";
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  border-bottom: 1px solid #cccccc;
+}
+
+.Article:last-child {
+  border: none;
+}
+
+.Article a {
+  grid-area: title;
+  padding: 0.5rem;
+}
+
+.Article p {
+  grid-area: des;
+}
+
+.Article img {
+  max-width: 200px;
+  grid-area: img;
+}

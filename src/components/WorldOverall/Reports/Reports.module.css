@@ -1,0 +1,16 @@
+.Reports {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  border: 1px solid #cccccc;
+  margin: 1rem 0;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.5) 1px 2px 3px;
+}
+
+.Reports > div:first-child {
+  text-transform: capitalize;
+  font-weight: bold;
+  white-space: nowrap;
+  transform: rotate(-90deg);
+  align-self: center;
+}

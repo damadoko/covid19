@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import classes from "./WorldOverall.module.css";
 
-import { connect } from "react-redux";
+import Reports from "./Reports/Reports";
+import News from "./News/News";
 
 class WorldOverall extends Component {
   render() {
@@ -11,8 +13,8 @@ class WorldOverall extends Component {
           <span>{this.props.countryEffected}</span>
           <p>Country Effected</p>
         </div>
-        <div>Report</div>
-        <div>News</div>
+        <Reports />
+        <News />
       </div>
     );
   }
