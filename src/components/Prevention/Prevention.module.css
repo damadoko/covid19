@@ -1,0 +1,108 @@
+.Prevention {
+  padding: 1rem;
+}
+
+.Prevention li {
+  list-style: none;
+}
+
+.Prevention h2 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  margin: 1rem auto;
+}
+
+.Prevention ul li:nth-child(odd) {
+  margin-left: auto;
+}
+
+.Prevention ul li:nth-child(even) {
+  margin-right: auto;
+}
+
+.Prevention h2 span:first-child {
+  color: #c43535;
+  font-size: 2rem;
+}
+
+.Prevention h2 span:last-child {
+  font-weight: bolder;
+  font-size: 1.5rem;
+}
+
+.Prevention ul li {
+  display: block;
+  max-width: 350px;
+  padding: 1.5rem 0;
+  font-weight: bolder;
+  font-size: 1.25rem;
+  position: relative;
+}
+
+.Prevention ul li:first-child span {
+  position: absolute;
+  top: -1.5rem;
+  right: 3rem;
+  font-size: 5rem;
+  font-weight: bold;
+  color: #cccccc;
+  z-index: -1;
+}
+
+.Prevention ul li:nth-child(2) span {
+  position: absolute;
+  top: -0.5rem;
+  left: 3rem;
+  font-size: 5rem;
+  font-weight: bold;
+  color: #cccccc;
+  z-index: -1;
+}
+
+.Prevention ul li:nth-child(3) span {
+  position: absolute;
+  top: -0.5rem;
+  right: 8rem;
+  font-size: 5rem;
+  font-weight: bold;
+  color: #cccccc;
+  z-index: -1;
+}
+
+.Prevention ul li:nth-child(4) span {
+  position: absolute;
+  top: -1rem;
+  left: -4rem;
+  font-size: 5rem;
+  font-weight: bold;
+  color: #cccccc;
+  z-index: -1;
+}
+
+.Prevention ul li:nth-child(4) {
+  margin-left: 4rem;
+}
+
+.Prevention ul li:last-child {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.Prevention ul li:last-child span:first-child {
+  color: #c43535;
+  font-weight: bolder;
+}
+
+.Prevention ul li:last-child span:last-child {
+  position: absolute;
+  top: 0;
+  right: -6rem;
+  font-size: 5rem;
+  border: 5px solid #c43535;
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+  text-align: center;
+  font-weight: bold;
+}

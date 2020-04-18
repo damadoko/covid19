@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Layout from "../hoc/Layout/Layout";
 import WorldOverall from "../components/WorldOverall/WorldOverall";
 import CountryDetail from "../components/CountryDetail/CountryDetail";
+import Prevention from "../components/Prevention/Prevention";
 
 class App extends Component {
   render() {
@@ -11,7 +12,7 @@ class App extends Component {
         <WorldOverall />
         <CountryDetail />
         <p>Chart</p>
-        <p>Prevention</p>
+        <Prevention />
       </Layout>
     );
   }
