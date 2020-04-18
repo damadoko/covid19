@@ -1,5 +1,49 @@
 .News {
   padding: 10px;
-  background-color: #e3e3e3;
   border-radius: 5px;
+  position: relative;
+}
+
+.News > span:first-child {
+  position: relative;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.News > span:first-child::before {
+  position: absolute;
+  content: "";
+  bottom: 4px;
+  left: 0;
+  width: 50%;
+  height: 4px;
+  background-color: #c43535;
+  transition: all 0.4s ease-in;
+}
+
+.News span:first-child:hover::before {
+  width: 100%;
+}
+
+.News span:last-child {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-weight: bold;
+  font-size: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.News span:last-child::before {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 4px;
+  padding: 3px;
+  border-left: 3px solid black;
+  border-top: 3px solid black;
+  transform: rotate(135deg);
+  font-weight: bold;
+  font-size: 0.75rem;
 }

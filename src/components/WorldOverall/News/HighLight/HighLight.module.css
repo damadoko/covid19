@@ -1,0 +1,25 @@
+.HighLight img {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.HighLight a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  overflow-wrap: break-word;
+}
+
+.HighLight span {
+  display: block;
+  font-size: 0.5rem;
+  color: #cccccc;
+}
+
+.HighLight p {
+  margin: 1rem 0;
+  max-height: 100px;
+  overflow: auto;
+}

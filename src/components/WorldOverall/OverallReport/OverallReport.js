@@ -5,10 +5,18 @@ import { connect } from "react-redux";
 class OverallReport extends Component {
   render() {
     return (
-      <div>
-        <div className={classes.OverallReport}>
-          <span>{this.props.countryEffected}</span>
-          <p>Country Effected</p>
+      <div className={classes.OverallReport}>
+        <div>
+          <span>{this.props.total}</span>
+          <p>TOTAL CASE</p>
+        </div>
+        <div>
+          <span>{this.props.recovered}</span>
+          <p>RECOVERED</p>
+        </div>
+        <div>
+          <span>{this.props.deaths}</span>
+          <p>DEATHS</p>
         </div>
       </div>
     );
@@ -17,7 +25,9 @@ class OverallReport extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    countryEffected: state.totalEffectedCountry,
+    total: state.overallData.totalCase,
+    recovered: state.overallData.recovered,
+    deaths: state.overallData.deaths,
   };
 };
 

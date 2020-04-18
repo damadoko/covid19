@@ -1,16 +1,33 @@
 .OverallReport {
   text-align: center;
-  border: 1px solid #cccccc;
+
   border-radius: 5px;
   padding: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.5) 1px 2px 3px;
 }
 
-.OverallReport span {
-  font-size: 3rem;
-  color: red;
+.OverallReport div {
+  padding: 0.5rem 0;
 }
+
+.OverallReport div span {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.OverallReport div:first-child span {
+  color: #7235c2;
+}
+
+.OverallReport div:nth-child(2) span {
+  color: #00caca;
+}
+
+.OverallReport div:last-child span {
+  color: #c43535;
+}
+
 .OverallReport p {
   font-weight: bold;
   font-size: 0.75rem;
+  color: #cccccc;
 }

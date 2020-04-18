@@ -1,16 +1,16 @@
 import React from "react";
-import classes from "./Article.module.css";
+import classes from "./HighLight.module.css";
 
-const Article = (props) => {
+const HighLight = (props) => {
   const { title, des, img, url, time } = props;
   return (
-    <div className={classes.Article}>
+    <div className={classes.HighLight}>
       <img src={img} alt={title} />
-      <span>{time}</span>
       <a href={url}> {title} </a>
+      <span>{time}</span>
       <p>{des}</p>
     </div>
   );
 };
 
-export default Article;
+export default HighLight;

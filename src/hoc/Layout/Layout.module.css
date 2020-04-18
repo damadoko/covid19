@@ -1,7 +1,8 @@
 .Layout {
   max-width: 485px;
-  margin: 160px auto 0 auto;
+  margin: 0px auto;
   box-sizing: border-box;
+  position: relative;
 }
 
 .Layout main {

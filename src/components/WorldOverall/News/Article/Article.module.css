@@ -1,8 +1,9 @@
 .Article {
   display: grid;
   grid-template-areas:
-    "title title title "
-    "des des img";
+    "img img title title "
+    "img img time time"
+    "img img des des";
   padding: 0.5rem;
   margin: 0.5rem 0;
   border-bottom: 1px solid #cccccc;
@@ -14,24 +15,31 @@
 
 .Article a {
   grid-area: title;
-  padding: 0.5rem;
   text-decoration: none;
   color: black;
   font-weight: bold;
-  font-size: 1.2rem;
+  /* font-size: ; */
 }
 
 .Article p {
   grid-area: des;
-  max-height: 100px;
+  max-height: 50px;
   overflow-y: auto;
+  font-size: 0.75rem;
 }
 ::-webkit-scrollbar {
   width: 0px; /* Remove scrollbar space */
   /* background: transparent; Optional: just make scrollbar invisible */
 }
 .Article img {
-  max-width: 200px;
-  max-width: 200px;
+  max-width: 150px;
+  max-width: 150px;
+  padding-right: 0.5rem;
   grid-area: img;
+}
+
+.Article span {
+  grid-area: time;
+  font-size: 0.5rem;
+  color: #cccccc;
 }
