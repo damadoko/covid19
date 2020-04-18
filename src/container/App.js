@@ -4,6 +4,7 @@ import Layout from "../hoc/Layout/Layout";
 import WorldOverall from "../components/WorldOverall/WorldOverall";
 import CountryDetail from "../components/CountryDetail/CountryDetail";
 import Prevention from "../components/Prevention/Prevention";
+import Chart from "../components/Chart/Chart";
 
 class App extends Component {
   render() {
@@ -11,7 +12,7 @@ class App extends Component {
       <Layout>
         <WorldOverall />
         <CountryDetail />
-        <p>Chart</p>
+        <Chart />
         <Prevention />
       </Layout>
     );
