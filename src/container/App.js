@@ -38,9 +38,22 @@ class App extends Component {
       url: `https://newsapi.org/v2/everything?q=COVID&from=${today}&sortBy=publishedAt&apiKey=${APIKey}&pageSize=${newsSize}&page=1`,
     });
     const newsDataArr = await newsData.data.articles;
-    console.log("News data Array", newsDataArr);
+    // console.log("News data Array", newsDataArr);
 
-    this.props.storeOverallReport(sortedData, newsDataArr);
+    // Fetch countrys name data
+    const countryNames = await axios({
+      method: "GET",
+      url: "https://covid-193.p.rapidapi.com/countries",
+      headers: {
+        "content-type": "application/octet-stream",
+        "x-rapidapi-host": "covid-193.p.rapidapi.com",
+        "x-rapidapi-key": "0feb686e78mshebefdcd7b5fe8abp127a2cjsnabf42285f2bd",
+      },
+    });
+
+    const countryNamesArr = await countryNames.data.response;
+    // console.log(countryNames);
+    this.props.storeOverallReport(sortedData, newsDataArr, countryNamesArr);
   }
 
   render() {
@@ -57,8 +70,13 @@ class App extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    storeOverallReport: (data, news) =>
-      dispatch({ type: "storeOverall", dataFetch: data, newsFetch: news }),
+    storeOverallReport: (data, news, names) =>
+      dispatch({
+        type: "storeOverall",
+        dataFetch: data,
+        newsFetch: news,
+        namesFetch: names,
+      }),
   };
 };
 

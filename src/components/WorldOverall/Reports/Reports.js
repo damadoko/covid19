@@ -50,12 +50,7 @@ const Reports = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    top3Country: state.top3Country,
-    // country: state.top3Country.country,
-    // confirmed: state.top3Country.cases.total,
-    // recovered: state.top3Country.cases.recovered,
-    // critical: state.top3Country.cases.critical,
-    // deaths: state.top3Country.deaths.total,
+    top3Country: state.overall.top3Country,
   };
 };
 

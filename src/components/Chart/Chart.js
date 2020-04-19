@@ -28,7 +28,7 @@ class Chart extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    data: state.chartData,
+    data: state.overall.WorldChartData,
   };
 };
 

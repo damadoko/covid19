@@ -1,21 +1,15 @@
 .CountryInfo {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.CountryInfo > div {
   text-align: center;
-  padding: 1rem;
 }
 
-.CountryInfo > div i {
-  position: relative;
-  color: #cccccc;
-  margin: 0.5rem;
-  overflow: hidden;
-  z-index: 1;
+.CountryInfo p {
+  text-transform: uppercase;
+  font-size: 0.75rem;
 }
 
-.title {
-  text-align: center;
+.CountryInfo select {
+  border: 1px solid black;
+  width: 80%;
+  height: 40px;
+  border-radius: 10px !important;
 }

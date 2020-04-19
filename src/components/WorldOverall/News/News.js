@@ -41,7 +41,7 @@ const News = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    newsArr: state.worldHotNews,
+    newsArr: state.overall.worldHotNews,
   };
 };
 
