@@ -33,3 +33,9 @@
   top: 0rem;
   left: 5rem;
 }
+
+.LogoFixed span {
+  position: absolute;
+  bottom: 4px;
+  font-size: 0.75rem;
+}

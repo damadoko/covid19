@@ -9,17 +9,17 @@ class OverallReport extends Component {
         <span>Live</span>
         <div>
           <span>{this.props.total}</span>
-          <span>(+{this.props.newCase})</span>
+          <span>({this.props.newCase})</span>
           <p>TOTAL CASE</p>
         </div>
         <div>
           <span>{this.props.recovered}</span>
-          <span>(+{this.props.newRecovered})</span>
+          {/* <span>({this.props.newRecovered})</span> */}
           <p>RECOVERED</p>
         </div>
         <div>
           <span>{this.props.deaths}</span>
-          <span> (+{this.props.newDeaths})</span>
+          <span> ({this.props.newDeaths})</span>
           <p>DEATHS</p>
         </div>
       </div>

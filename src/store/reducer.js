@@ -1,12 +1,12 @@
 const initialState = {
+  lastUpdate: null,
   currentPage: null,
   overallData: {
-    totalCase: 2312124,
-    recovered: 122412,
-    deaths: 15122,
-    newCase: 21234,
-    newRecovered: 23532,
-    newDeaths: 3233,
+    totalCase: null,
+    recovered: null,
+    deaths: null,
+    newCase: null,
+    newDeaths: null,
   },
   totalEffectedCountry: 123,
   top3Country: [],
@@ -33,19 +33,34 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
+  // console.log(action);
   switch (action.type) {
     case "storeOverall":
-      let stateCurrent = state.overallData;
-      stateCurrent = {
-        totalCase: action.dataFetch.data.confirmed,
-        recovered: action.dataFetch.data.recovered,
-        deaths: action.dataFetch.data.deaths,
-        newCase: action.dataFetch.data.confirmed_diff,
-        newRecovered: action.dataFetch.data.recovered_diff,
-        newDeaths: action.dataFetch.data.deaths_diff,
+      const allData = action.dataFetch.filter((ctry) => ctry.country === "All");
+      const top3Data = action.dataFetch
+        .filter(
+          (ctry) =>
+            ctry.country !== "All" &&
+            ctry.country !== "Europe" &&
+            ctry.country !== "Asia" &&
+            ctry.country !== "North-America" &&
+            ctry.country !== "South-America" &&
+            ctry.country !== "Africa"
+        )
+        .slice(0, 3);
+      return {
+        ...state,
+        lastUpdate: allData[0].time,
+        overallData: {
+          ...state.overallData,
+          totalCase: allData[0].cases.total,
+          recovered: allData[0].cases.active,
+          deaths: allData[0].deaths.total,
+          newCase: allData[0].cases.new,
+          newDeaths: allData[0].deaths.new,
+        },
+        top3Country: top3Data,
       };
-      return { ...state, overallData: stateCurrent };
-
     default:
       return state;
   }
