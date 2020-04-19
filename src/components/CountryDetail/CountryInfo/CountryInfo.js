@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import classes from "./CountryInfo.module.css";
+import { userSelect } from "../../../store/actions/actions";
 
 import OverallReport from "../../WorldOverall/OverallReport/OverallReport";
 
@@ -10,7 +11,7 @@ const CountryInfo = (props) => {
       {opt}
     </option>
   ));
-  console.log(props.selectedData);
+
   return (
     <Fragment>
       <div className={classes.CountryInfo}>
@@ -20,11 +21,11 @@ const CountryInfo = (props) => {
         </select>
       </div>
       <OverallReport
-      // total={props.selectedData.cases.total}
-      // newCase={props.selectedData.cases.new}
-      // recovered={props.selectedData.cases.recovered}
-      // deaths={props.selectedData.deaths.total}
-      // newDeaths={props.selectedData.deaths.new}
+        total={props.selectedData.cases.total}
+        newCase={props.selectedData.cases.new}
+        recovered={props.selectedData.cases.recovered}
+        deaths={props.selectedData.deaths.total}
+        newDeaths={props.selectedData.deaths.new}
       />
     </Fragment>
   );
@@ -39,8 +40,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onUserSelect: (name) =>
-      dispatch({ type: "userSelectCountry", countryName: name }),
+    onUserSelect: (name) => dispatch(userSelect(name)),
   };
 };
 

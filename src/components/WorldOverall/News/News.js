@@ -1,14 +1,15 @@
 import React from "react";
-import { connect } from "react-redux";
 import classes from "./News.module.css";
 
 import Article from "./Article/Article";
 import HighLight from "./HighLight/HighLight";
 
 const News = (props) => {
-  const highLightData = props.newsArr.slice(0, 1);
+  const { newsArr } = props;
+
+  const highLightData = newsArr.slice(0, 1);
   // console.log(highLightData[0].source.name);
-  const news = props.newsArr
+  const news = newsArr
     .slice(1, 3)
     .map((item, index) => (
       <Article
@@ -39,10 +40,4 @@ const News = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    newsArr: state.overall.worldHotNews,
-  };
-};
-
-export default connect(mapStateToProps, null)(News);
+export default News;

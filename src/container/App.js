@@ -8,6 +8,8 @@ import CountryDetail from "../components/CountryDetail/CountryDetail";
 import Prevention from "../components/Prevention/Prevention";
 import Chart from "../components/Chart/Chart";
 
+import { userSelect } from "../store/actions/actions";
+
 class App extends Component {
   async componentDidMount() {
     // Fetch country data
@@ -29,7 +31,7 @@ class App extends Component {
     );
     // console.log("Sorted Data:", sortedData);
 
-    // Fetch News data
+    // Fetch Overall News data
     const APIKey = "a0e915657c944848b87ab3fbf85cf5a4";
     const today = new Date().toISOString().slice(0, 10);
     const newsSize = 5;
@@ -39,6 +41,9 @@ class App extends Component {
     });
     const newsDataArr = await newsData.data.articles;
     // console.log("News data Array", newsDataArr);
+
+    // Fetch default country news data
+    this.props.storeCountryNews(this.props.selectedCtry);
 
     // Fetch countrys name data
     const countryNames = await axios({
@@ -68,6 +73,12 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    selectedCtry: state.selected.selectedCountry,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     storeOverallReport: (data, news, names) =>
@@ -77,7 +88,8 @@ const mapDispatchToProps = (dispatch) => {
         newsFetch: news,
         namesFetch: names,
       }),
+    storeCountryNews: (name) => dispatch(userSelect(name)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

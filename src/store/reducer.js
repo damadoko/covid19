@@ -2,16 +2,22 @@ const initialState = {
   lastUpdate: null,
   currentPage: null,
   overall: {
-    sortedData: null,
-    countryNames: ["test"],
+    sortedData: [
+      {
+        country: "Loading",
+        cases: { new: 0, total: 0, recovered: 0 },
+        deaths: { total: 0, new: 0 },
+      },
+    ],
+    countryNames: ["Loading"],
     overallData: {
       cases: { new: 0, total: 0, recovered: 0 },
       deaths: { total: 0, new: 0 },
     },
     worldHotNews: [
-      { source: { name: "test" } },
-      { source: { name: "test" } },
-      { source: { name: "test" } },
+      { source: { name: "Loading" } },
+      { source: { name: "Loading" } },
+      { source: { name: "Loading" } },
     ],
     top3Country: [],
     WorldChartData: {
@@ -41,6 +47,11 @@ const initialState = {
       cases: { new: 0, total: 0, recovered: 0 },
       deaths: { total: 0, new: 0 },
     },
+    selectedHotNews: [
+      { source: { name: "Loading" } },
+      { source: { name: "Loading" } },
+      { source: { name: "Loading" } },
+    ],
   },
 };
 
@@ -48,6 +59,7 @@ const reducer = (state = initialState, action) => {
   // console.log(action);
   switch (action.type) {
     case "storeOverall":
+      console.log(action.dataFetch);
       const allData = action.dataFetch.filter((ctry) => ctry.country === "All");
       const top3Data = action.dataFetch
         .filter(
@@ -81,15 +93,23 @@ const reducer = (state = initialState, action) => {
         },
       };
     case "userSelectCountry":
-      const selectedCountryData = state.sortedData.filter(
+      const defaultData = {
+        cases: { new: 0, total: 0, recovered: 0 },
+        deaths: { total: 0, new: 0 },
+      };
+      const selectedCountryData = state.overall.sortedData.filter(
         (ctry) => ctry.country === action.countryName
       );
-      console.log(selectedCountryData[0]);
+      console.log(action.countryNews);
       return {
         ...state,
         selected: {
           ...state.selected,
-          selectedData: selectedCountryData[0],
+          selectedData:
+            selectedCountryData[0] !== undefined
+              ? selectedCountryData[0]
+              : defaultData,
+          selectedHotNews: action.countryNews,
         },
       };
     default:

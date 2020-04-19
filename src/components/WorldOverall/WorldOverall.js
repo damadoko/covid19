@@ -19,7 +19,7 @@ class WorldOverall extends Component {
           newDeaths={this.props.overallData.deaths.new}
         />
         <Reports />
-        <News />
+        <News newsArr={this.props.newsArr} />
       </div>
     );
   }
@@ -28,6 +28,7 @@ class WorldOverall extends Component {
 const mapStateToProps = (state) => {
   return {
     overallData: state.overall.overallData,
+    newsArr: state.overall.worldHotNews,
   };
 };
 
