@@ -10,24 +10,7 @@ import Chart from "../components/Chart/Chart";
 
 class App extends Component {
   async componentDidMount() {
-    // // Fetch overall data
-    // const overall = await axios({
-    //   method: "GET",
-    //   url: "https://covid-19-statistics.p.rapidapi.com/reports/total",
-    //   headers: {
-    //     "content-type": "application/octet-stream",
-    //     "x-rapidapi-host": "covid-19-statistics.p.rapidapi.com",
-    //     "x-rapidapi-key": "0feb686e78mshebefdcd7b5fe8abp127a2cjsnabf42285f2bd",
-    //   },
-    //   params: {
-    //     date: "2020-04-17",
-    //   },
-    // });
-    // const dataOverall = await overall.data.data;
-    // // console.log(data.data);
-    // this.props.storeOverallReport(dataOverall);
-
-    // Fetch top 3 country data
+    // Fetch country data
     const worldData = await axios({
       method: "GET",
       url: "https://covid-193.p.rapidapi.com/statistics",
@@ -44,24 +27,20 @@ class App extends Component {
     const sortedData = await worldDataArr.sort(
       (a, b) => b.cases.total - a.cases.total
     );
+    // console.log("Sorted Data:", sortedData);
 
-    // const allData = await sortedData.filter((ctry) => ctry.country === "All");
+    // Fetch News data
+    const APIKey = "a0e915657c944848b87ab3fbf85cf5a4";
+    const today = new Date().toISOString().slice(0, 10);
+    const newsSize = 5;
+    const newsData = await axios({
+      method: "GET",
+      url: `https://newsapi.org/v2/everything?q=COVID&from=${today}&sortBy=publishedAt&apiKey=${APIKey}&pageSize=${newsSize}&page=1`,
+    });
+    const newsDataArr = await newsData.data.articles;
+    console.log("News data Array", newsDataArr);
 
-    const top3Data = await sortedData
-      .filter(
-        (ctry) =>
-          ctry.country !== "All" &&
-          ctry.country !== "Europe" &&
-          ctry.country !== "Asia" &&
-          ctry.country !== "North-America" &&
-          ctry.country !== "South-America" &&
-          ctry.country !== "Africa"
-      )
-      .slice(0, 3);
-
-    console.log(top3Data);
-    this.props.storeOverallReport(sortedData);
-    return sortedData;
+    this.props.storeOverallReport(sortedData, newsDataArr);
   }
 
   render() {
@@ -78,8 +57,8 @@ class App extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    storeOverallReport: (data) =>
-      dispatch({ type: "storeOverall", dataFetch: data }),
+    storeOverallReport: (data, news) =>
+      dispatch({ type: "storeOverall", dataFetch: data, newsFetch: news }),
   };
 };
 

@@ -10,7 +10,11 @@ const initialState = {
   },
   totalEffectedCountry: 123,
   top3Country: [],
-  hotNews: [],
+  worldHotNews: [
+    { source: { name: "test" } },
+    { source: { name: "test" } },
+    { source: { name: "test" } },
+  ],
   chartData: {
     labels: ["10-4", "11-4", "12-4", "13-4", "14-4", "15-4", "16-4", "17-4"],
     datasets: [
@@ -60,6 +64,7 @@ const reducer = (state = initialState, action) => {
           newDeaths: allData[0].deaths.new,
         },
         top3Country: top3Data,
+        worldHotNews: action.newsFetch,
       };
     default:
       return state;

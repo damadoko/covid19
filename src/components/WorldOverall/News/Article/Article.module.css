@@ -1,6 +1,7 @@
 .Article {
   display: grid;
   grid-template-areas:
+    "img img author author "
     "img img title title "
     "img img time time"
     "img img des des";
@@ -32,13 +33,18 @@
   /* background: transparent; Optional: just make scrollbar invisible */
 }
 .Article img {
-  max-width: 150px;
-  max-width: 150px;
+  max-width: 200px;
+  max-height: 200px;
   padding-right: 0.5rem;
   grid-area: img;
 }
 
-.Article span {
+.Article span:nth-child(2) {
+  grid-area: author;
+  font-size: 0.5rem;
+  color: #cccccc;
+}
+.Article span:nth-child(4) {
   grid-area: time;
   font-size: 0.5rem;
   color: #cccccc;
