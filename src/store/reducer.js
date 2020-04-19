@@ -33,7 +33,22 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  return state;
+  switch (action.type) {
+    case "storeOverall":
+      let stateCurrent = state.overallData;
+      stateCurrent = {
+        totalCase: action.dataFetch.data.confirmed,
+        recovered: action.dataFetch.data.recovered,
+        deaths: action.dataFetch.data.deaths,
+        newCase: action.dataFetch.data.confirmed_diff,
+        newRecovered: action.dataFetch.data.recovered_diff,
+        newDeaths: action.dataFetch.data.deaths_diff,
+      };
+      return { ...state, overallData: stateCurrent };
+
+    default:
+      return state;
+  }
 };
 
 export default reducer;

@@ -39,7 +39,6 @@ const News = (props) => {
   ];
 
   const highLightData = newsData.slice(0, 1);
-  console.log(highLightData);
   newsData.shift();
   const news = newsData.map((item, index) => (
     <Article
