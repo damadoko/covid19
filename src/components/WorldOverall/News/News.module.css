@@ -33,6 +33,7 @@
   font-weight: bold;
   font-size: 0.75rem;
   padding-right: 0.75rem;
+  cursor: pointer;
 }
 
 .News span:last-child::before {

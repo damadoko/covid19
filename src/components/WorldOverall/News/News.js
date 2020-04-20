@@ -1,16 +1,17 @@
 import React from "react";
 import classes from "./News.module.css";
+import { connect } from "react-redux";
 
 import Article from "./Article/Article";
 import HighLight from "./HighLight/HighLight";
 
 const News = (props) => {
-  const { newsArr } = props;
+  const { newsArr, newsCount, moreNews, hideNews } = props;
 
   const highLightData = newsArr.slice(0, 1);
   // console.log(highLightData[0].source.name);
   const news = newsArr
-    .slice(1, 3)
+    .slice(1, newsCount)
     .map((item, index) => (
       <Article
         key={index}
@@ -35,9 +36,19 @@ const News = (props) => {
         src={highLightData[0].source.name}
       />
       <div>{news}</div>
-      <span>SEE MORE</span>
+      {newsCount === props.newsSize ? (
+        <span onClick={hideNews}>HIDE</span>
+      ) : (
+        <span onClick={moreNews}>SEE MORE</span>
+      )}
     </div>
   );
 };
 
-export default News;
+const mapStateToProps = (state) => {
+  return {
+    newsSize: state.defaultFetchNewsNumber,
+  };
+};
+
+export default connect(mapStateToProps, null)(News);

@@ -35,7 +35,7 @@ class App extends Component {
     // Fetch Overall News data
     const APIKey = "a0e915657c944848b87ab3fbf85cf5a4";
     const today = new Date().toISOString().slice(0, 10);
-    const newsSize = 5;
+    const newsSize = this.props.newsSize;
     const newsData = await axios({
       method: "GET",
       url: `https://newsapi.org/v2/everything?q=COVID&from=${today}&sortBy=publishedAt&apiKey=${APIKey}&pageSize=${newsSize}&page=1`,
@@ -44,7 +44,7 @@ class App extends Component {
     // console.log("News data Array", newsDataArr);
 
     // Fetch default country news data
-    this.props.storeCountryNews(this.props.selectedCtry);
+    this.props.storeCountryNews(this.props.selectedCtry, this.props.newsSize);
 
     // Fetch countrys name data
     const countryNames = await axios({
@@ -111,6 +111,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     selectedCtry: state.selected.selectedCountry,
+    newsSize: state.defaultFetchNewsNumber,
   };
 };
 

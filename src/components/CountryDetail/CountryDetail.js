@@ -9,7 +9,12 @@ const CountryDetail = (props) => {
   return (
     <div className={classes.CountryDetail}>
       <CountryInfo />
-      <News newsArr={props.newsArr} />
+      <News
+        newsArr={props.newsArr}
+        newsCount={props.newsCount}
+        moreNews={props.onMoreNews}
+        hideNews={props.onHideNews}
+      />
     </div>
   );
 };
@@ -17,7 +22,15 @@ const CountryDetail = (props) => {
 const mapStateToProps = (state) => {
   return {
     newsArr: state.selected.selectedHotNews,
+    newsCount: state.selected.selectedNewsCount,
   };
 };
 
-export default connect(mapStateToProps, null)(CountryDetail);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onMoreNews: () => dispatch({ type: "moreNews", location: "selected" }),
+    onHideNews: () => dispatch({ type: "hideNews", location: "selected" }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CountryDetail);

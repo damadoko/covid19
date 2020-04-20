@@ -1,6 +1,6 @@
 const initialState = {
   lastUpdate: null,
-  currentPage: null,
+  defaultFetchNewsNumber: 7,
   overall: {
     sortedData: [
       {
@@ -19,6 +19,7 @@ const initialState = {
       { source: { name: "Loading" } },
       { source: { name: "Loading" } },
     ],
+    worldNewsCount: 3,
     top3Country: [],
     worldChartData: {
       labels: ["10-4", "11-4", "12-4", "13-4", "14-4", "15-4", "16-4", "17-4"],
@@ -52,10 +53,13 @@ const initialState = {
       { source: { name: "Loading" } },
       { source: { name: "Loading" } },
     ],
+    selectedNewsCount: 3,
   },
 };
 
 const reducer = (state = initialState, action) => {
+  const currentWorldNewsCount = state.overall.worldNewsCount;
+  const currentSelectedNewsCount = state.selected.selectedNewsCount;
   // console.log(action);
   switch (action.type) {
     case "storeOverall":
@@ -130,6 +134,40 @@ const reducer = (state = initialState, action) => {
               ? selectedCountryData[0]
               : defaultData,
           selectedHotNews: action.countryNews,
+        },
+      };
+
+    case "moreNews":
+      return {
+        ...state,
+        overall: {
+          ...state.overall,
+          worldNewsCount:
+            action.location === "world"
+              ? currentWorldNewsCount + 2
+              : currentWorldNewsCount,
+        },
+        selected: {
+          ...state.selected,
+          selectedNewsCount:
+            action.location === "selected"
+              ? currentSelectedNewsCount + 2
+              : currentSelectedNewsCount,
+        },
+      };
+
+    case "hideNews":
+      return {
+        ...state,
+        overall: {
+          ...state.overall,
+          worldNewsCount:
+            action.location === "world" ? 3 : currentWorldNewsCount,
+        },
+        selected: {
+          ...state.selected,
+          selectedNewsCount:
+            action.location === "selected" ? 3 : currentSelectedNewsCount,
         },
       };
     default:
