@@ -70,7 +70,6 @@ class App extends Component {
       },
     });
     const worldHistoryData = await worldHistory.data.data;
-    console.log(worldHistoryData);
 
     this.props.storeOverallReport(
       sortedData,
@@ -86,6 +85,7 @@ class App extends Component {
         <Switch>
           <Route path="/chart" component={Chart} />
           <Route path="/country" exact component={CountryDetail} />
+          {/* <Route path="/country/:name" exact component={CountryDetail} /> */}
           <Route path="/prevention" exact component={Prevention} />
           <Route path="/" component={WorldOverall} />
           {/* <Route path="/" component={Chart} /> */}
@@ -117,7 +117,7 @@ const mapDispatchToProps = (dispatch) => {
         namesFetch: names,
         historyFetch: history,
       }),
-    storeCountryNews: (name) => dispatch(userSelect(name)),
+    storeCountryNews: (name, size) => dispatch(userSelect(name, size)),
   };
 };
 

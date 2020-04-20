@@ -6,9 +6,11 @@ import CountryInfo from "./CountryInfo/CountryInfo";
 import News from "../WorldOverall/News/News";
 
 const CountryDetail = (props) => {
+  console.log(props);
+
   return (
     <div className={classes.CountryDetail}>
-      <CountryInfo />
+      <CountryInfo countryName={props.match.params.name} />
       <News
         newsArr={props.newsArr}
         newsCount={props.newsCount}

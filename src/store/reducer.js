@@ -89,7 +89,7 @@ const reducer = (state = initialState, action) => {
         .map((data) => data.total_cases)
         .slice(0, 30)
         .reverse();
-      console.log(dataArr);
+
       return {
         ...state,
         lastUpdate: allData[0].time,

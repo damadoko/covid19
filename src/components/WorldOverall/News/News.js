@@ -8,9 +8,21 @@ import HighLight from "./HighLight/HighLight";
 const News = (props) => {
   const { newsArr, newsCount, moreNews, hideNews } = props;
 
-  const highLightData = newsArr.slice(0, 1);
+  const noDataArr = [
+    {
+      title: "No data available",
+      description: "No data available",
+      urlToImage: "No data available",
+      url: "No data available",
+      publishedAt: "No data available",
+      source: { name: "No data available" },
+    },
+  ];
+  const newsProcessingArr = newsArr.length === 0 ? noDataArr : newsArr;
+
+  const highLightData = newsProcessingArr.slice(0, 1);
   // console.log(highLightData[0].source.name);
-  const news = newsArr
+  const news = newsProcessingArr
     .slice(1, newsCount)
     .map((item, index) => (
       <Article

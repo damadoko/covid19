@@ -1,43 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
+// import { Link } from "react-router-dom";
 import classes from "./Reports.module.css";
 
 import Report from "./Report/Report";
 import Aux from "../../../hoc/Aux/Aux";
 
 const Reports = (props) => {
-  // const reportsData = [
-  //   {
-  //     country: "usa",
-  //     confirmed: 678144,
-  //     recovered: 57754,
-  //     critical: 13369,
-  //     deaths: 34641,
-  //   },
-  //   {
-  //     country: "spain",
-  //     confirmed: 184948,
-  //     recovered: 74797,
-  //     critical: 7371,
-  //     deaths: 19315,
-  //   },
-  //   {
-  //     country: "italy",
-  //     confirmed: 168941,
-  //     recovered: 40164,
-  //     critical: 2936,
-  //     deaths: 22170,
-  //   },
-  // ];
-
   const reports = props.top3Country.map((ctry, index) => (
+    // <Link to={"/country/" + ctry.country} key={index}>
     <Report key={index} country={ctry.country} confirmed={ctry.cases.total} />
+    // </Link>
   ));
 
   return (
     <Aux>
       <div className={classes.Span}>
-        <span> HIGHEST CASES</span>
+        <span>HIGHEST CASES</span>
         <span>By Country, Territory or Area</span>
       </div>
       <div className={classes.Reports}>{reports}</div>
