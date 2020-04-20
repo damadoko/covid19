@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import Layout from "../hoc/Layout/Layout";
 import WorldOverall from "../components/WorldOverall/WorldOverall";
@@ -83,10 +83,22 @@ class App extends Component {
   render() {
     return (
       <Layout>
-        <Route path="/home" exact component={WorldOverall} />
-        <Route path="/country" exact component={CountryDetail} />
-        <Route path="/" component={Chart} />
-        <Route path="/prevention" exact component={Prevention} />
+        <Switch>
+          <Route path="/chart" component={Chart} />
+          <Route path="/country" exact component={CountryDetail} />
+          <Route path="/prevention" exact component={Prevention} />
+          <Route
+            path="/"
+            render={() => (
+              <div>
+                <WorldOverall />
+                <Chart />
+              </div>
+            )}
+          />
+          {/* <Route path="/" component={Chart} /> */}
+        </Switch>
+
         {/* <WorldOverall />
         <CountryDetail />
         <Chart />

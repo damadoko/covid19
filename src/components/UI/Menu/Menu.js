@@ -15,7 +15,8 @@ const Menu = () => {
     <div className={classes.Menu}>
       <div>
         <NavLink
-          to="/home"
+          to="/"
+          exact
           className={classes.NavLink}
           activeClassName={classes.active}
         >

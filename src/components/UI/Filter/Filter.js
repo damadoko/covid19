@@ -11,7 +11,7 @@ const Filter = (props) => {
   // ));
   return (
     <div className={classes.Filter}>
-      <NavLink to="/home" activeClassName={classes.active}>
+      <NavLink to="/" exact activeClassName={classes.active}>
         OVERVIEW
         <span />
       </NavLink>{" "}
