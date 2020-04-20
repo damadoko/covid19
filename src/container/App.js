@@ -87,15 +87,7 @@ class App extends Component {
           <Route path="/chart" component={Chart} />
           <Route path="/country" exact component={CountryDetail} />
           <Route path="/prevention" exact component={Prevention} />
-          <Route
-            path="/"
-            render={() => (
-              <div>
-                <WorldOverall />
-                <Chart />
-              </div>
-            )}
-          />
+          <Route path="/" component={WorldOverall} />
           {/* <Route path="/" component={Chart} /> */}
         </Switch>
 

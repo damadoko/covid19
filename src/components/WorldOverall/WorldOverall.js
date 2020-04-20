@@ -6,6 +6,7 @@ import classes from "./WorldOverall.module.css";
 import OverallReport from "./OverallReport/OverallReport";
 import Reports from "./Reports/Reports";
 import News from "./News/News";
+import Chart from "../Chart/Chart";
 
 class WorldOverall extends Component {
   render() {
@@ -18,6 +19,7 @@ class WorldOverall extends Component {
           deaths={this.props.overallData.deaths.total}
           newDeaths={this.props.overallData.deaths.new}
         />
+        <Chart />
         <Reports />
         <News
           newsArr={this.props.newsArr}

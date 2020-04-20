@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import { Bar } from "react-chartjs-2";
 import { connect } from "react-redux";
 
+import classes from "./Chart.module.css";
+
 class Chart extends Component {
   render() {
     return (
-      <div>
+      <div className={classes.Chart}>
         <Bar
           data={this.props.data}
           // width={100}
@@ -13,11 +15,13 @@ class Chart extends Component {
           options={{
             title: {
               display: true,
-              text: "Worldwide new cases",
+              text: "WORLDWIDE NEW CASES",
+              position: "bottom",
+              fontSize: 20,
             },
             legend: {
               display: true,
-              position: "top",
+              position: "bottom",
             },
           }}
         />
