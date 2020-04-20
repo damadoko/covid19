@@ -6,20 +6,18 @@
   align-items: center;
 }
 
-.Filter div {
+.Filter a {
+  text-decoration: none;
+  color: black;
   font-size: 1.25rem;
   padding: 10px;
   text-align: center;
-}
-
-.Filter div {
   position: relative;
   z-index: 1;
 }
 
-.Filter div::after {
+.Filter a span {
   position: absolute;
-  content: "";
   bottom: 4px;
   left: 0;
   height: 4px;
@@ -29,17 +27,17 @@
   opacity: 0;
 }
 
-.Filter div:hover::after {
+.Filter a:hover span {
   width: 100%;
   opacity: 1;
   background-color: #c43535;
 }
 
-.Filter div[data-active="true"] {
+.Filter a.active {
   font-weight: bolder;
 }
 
-.Filter div[data-active="true"]::after {
+.Filter a.active span {
   opacity: 1;
   background-color: #c43535;
 }

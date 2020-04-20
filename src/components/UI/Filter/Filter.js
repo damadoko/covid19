@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Filter.module.css";
+import { NavLink } from "react-router-dom";
 
 const Filter = (props) => {
   // const filterArr = ["ALL", "TODAY", "YESTERDAY"];
@@ -10,8 +11,14 @@ const Filter = (props) => {
   // ));
   return (
     <div className={classes.Filter}>
-      <div data-active="true">OVERVIEW</div>
-      <div data-active="false">EXPLORER</div>
+      <NavLink to="/home" activeClassName={classes.active}>
+        OVERVIEW
+        <span />
+      </NavLink>{" "}
+      <NavLink to="/country" activeClassName={classes.active}>
+        EXPLORER
+        <span />
+      </NavLink>
     </div>
   );
 };

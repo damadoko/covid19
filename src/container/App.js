@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { connect } from "react-redux";
+import { Route } from "react-router-dom";
 
 import Layout from "../hoc/Layout/Layout";
 import WorldOverall from "../components/WorldOverall/WorldOverall";
@@ -58,16 +59,38 @@ class App extends Component {
 
     const countryNamesArr = await countryNames.data.response;
     // console.log(countryNames);
-    this.props.storeOverallReport(sortedData, newsDataArr, countryNamesArr);
+
+    // Fetch world history for chart Data
+    const worldHistory = await axios({
+      method: "GET",
+      url: "https://coronavirus-map.p.rapidapi.com/v1/spots/summary",
+      headers: {
+        "x-rapidapi-host": "coronavirus-map.p.rapidapi.com",
+        "x-rapidapi-key": "0feb686e78mshebefdcd7b5fe8abp127a2cjsnabf42285f2bd",
+      },
+    });
+    const worldHistoryData = await worldHistory.data.data;
+    console.log(worldHistoryData);
+
+    this.props.storeOverallReport(
+      sortedData,
+      newsDataArr,
+      countryNamesArr,
+      worldHistoryData
+    );
   }
 
   render() {
     return (
       <Layout>
-        <WorldOverall />
+        <Route path="/home" exact component={WorldOverall} />
+        <Route path="/country" exact component={CountryDetail} />
+        <Route path="/" component={Chart} />
+        <Route path="/prevention" exact component={Prevention} />
+        {/* <WorldOverall />
         <CountryDetail />
         <Chart />
-        <Prevention />
+        <Prevention /> */}
       </Layout>
     );
   }
@@ -81,12 +104,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    storeOverallReport: (data, news, names) =>
+    storeOverallReport: (data, news, names, history) =>
       dispatch({
         type: "storeOverall",
         dataFetch: data,
         newsFetch: news,
         namesFetch: names,
+        historyFetch: history,
       }),
     storeCountryNews: (name) => dispatch(userSelect(name)),
   };

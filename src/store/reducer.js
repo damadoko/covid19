@@ -20,7 +20,7 @@ const initialState = {
       { source: { name: "Loading" } },
     ],
     top3Country: [],
-    WorldChartData: {
+    worldChartData: {
       labels: ["10-4", "11-4", "12-4", "13-4", "14-4", "15-4", "16-4", "17-4"],
       datasets: [
         {
@@ -59,7 +59,6 @@ const reducer = (state = initialState, action) => {
   // console.log(action);
   switch (action.type) {
     case "storeOverall":
-      console.log(action.dataFetch);
       const allData = action.dataFetch.filter((ctry) => ctry.country === "All");
       const top3Data = action.dataFetch
         .filter(
@@ -75,7 +74,18 @@ const reducer = (state = initialState, action) => {
       const defaultSelectedCountryData = action.dataFetch.filter(
         (ctry) => ctry.country === state.selected.selectedCountry
       );
-      console.log(defaultSelectedCountryData);
+
+      // Chart data
+      const dateArr = Object.keys(action.historyFetch)
+        .map((date) => date.slice(6))
+        .slice(0, 30)
+        .reverse();
+
+      const dataArr = Object.values(action.historyFetch)
+        .map((data) => data.total_cases)
+        .slice(0, 30)
+        .reverse();
+      console.log(dataArr);
       return {
         ...state,
         lastUpdate: allData[0].time,
@@ -86,6 +96,16 @@ const reducer = (state = initialState, action) => {
           worldHotNews: action.newsFetch,
           countryNames: action.namesFetch,
           sortedData: action.dataFetch,
+          worldChartData: {
+            ...state.overall.worldChartData,
+            labels: dateArr,
+            datasets: [
+              ...state.overall.worldChartData.datasets.filter(
+                (item) => item.label !== "Cases"
+              ),
+              { label: "Cases", data: dataArr },
+            ],
+          },
         },
         selected: {
           ...state.selected,
@@ -100,7 +120,7 @@ const reducer = (state = initialState, action) => {
       const selectedCountryData = state.overall.sortedData.filter(
         (ctry) => ctry.country === action.countryName
       );
-      console.log(action.countryNews);
+
       return {
         ...state,
         selected: {

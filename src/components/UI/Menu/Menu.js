@@ -1,10 +1,11 @@
 import React from "react";
 import classes from "./Menu.module.css";
+import { NavLink } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faBell,
-  faHome,
+  faGlobeAmericas,
+  faMap,
   faChartBar,
   faPumpMedical,
 } from "@fortawesome/free-solid-svg-icons";
@@ -12,17 +13,45 @@ import {
 const Menu = () => {
   return (
     <div className={classes.Menu}>
-      <div data-active="false">
-        <FontAwesomeIcon size="2x" icon={faBell} />
+      <div>
+        <NavLink
+          to="/home"
+          className={classes.NavLink}
+          activeClassName={classes.active}
+        >
+          <FontAwesomeIcon size="2x" icon={faGlobeAmericas} />
+        </NavLink>
+        <span />
       </div>
-      <div data-active="true">
-        <FontAwesomeIcon size="2x" icon={faHome} />
+      <div>
+        <NavLink
+          to="/country"
+          className={classes.NavLink}
+          activeClassName={classes.active}
+        >
+          <FontAwesomeIcon size="2x" icon={faMap} />
+        </NavLink>
+        <span />
       </div>
-      <div data-active="false">
-        <FontAwesomeIcon size="2x" icon={faChartBar} />
+      <div>
+        <NavLink
+          to="/chart"
+          className={classes.NavLink}
+          activeClassName={classes.active}
+        >
+          <FontAwesomeIcon size="2x" icon={faChartBar} />
+        </NavLink>
+        <span />
       </div>
-      <div data-active="false">
-        <FontAwesomeIcon size="2x" icon={faPumpMedical} />
+      <div>
+        <NavLink
+          to="/prevention"
+          className={classes.NavLink}
+          activeClassName={classes.active}
+        >
+          <FontAwesomeIcon size="2x" icon={faPumpMedical} />
+        </NavLink>
+        <span />
       </div>
     </div>
   );
