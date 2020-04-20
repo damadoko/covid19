@@ -124,7 +124,7 @@ const reducer = (state = initialState, action) => {
       const selectedCountryData = state.overall.sortedData.filter(
         (ctry) => ctry.country === action.countryName
       );
-
+      // console.log(action);
       return {
         ...state,
         selected: {

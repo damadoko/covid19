@@ -13,21 +13,22 @@ class CountryInfo extends Component {
   //       : this.props.selectedCountry;
   //   this.props.onUserSelect(currentSelectedCountry, this.props.sizeNews);
   // }
+  componentDidUpdate() {}
+
   render() {
+    const { countryName, selectCountry } = this.props;
+    console.log(this.props);
     const optionList = this.props.countryNameArr.map((opt, index) => (
       <option key={index} value={opt}>
         {opt}
       </option>
     ));
+
     return (
       <Fragment>
         <div className={classes.CountryInfo}>
           <p>Country / Region</p>
-          <select
-            onChange={(e) =>
-              this.props.onUserSelect(e.target.value, this.props.sizeNews)
-            }
-          >
+          <select value={countryName} onChange={selectCountry}>
             {optionList}
           </select>
         </div>

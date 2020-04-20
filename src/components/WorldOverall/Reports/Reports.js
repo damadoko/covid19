@@ -7,9 +7,22 @@ import Report from "./Report/Report";
 import Aux from "../../../hoc/Aux/Aux";
 
 const Reports = (props) => {
-  const reports = props.top3Country.map((ctry, index) => (
+  const { history, top3Country } = props;
+  // console.log(top3Country);
+
+  const test = (type) => {
+    console.log(type);
+    history.push({
+      pathname: `/country/${type}`,
+    });
+    // history.push(`google.com`);
+  };
+
+  const reports = top3Country.map((ctry, index) => (
     // <Link to={"/country/" + ctry.country} key={index}>
-    <Report key={index} country={ctry.country} confirmed={ctry.cases.total} />
+    <div onClick={() => test(ctry.country)} key={index}>
+      <Report country={ctry.country} confirmed={ctry.cases.total} />
+    </div>
     // </Link>
   ));
 

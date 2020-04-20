@@ -85,9 +85,10 @@ class App extends Component {
         <Switch>
           <Route path="/chart" component={Chart} />
           <Route path="/country" exact component={CountryDetail} />
-          {/* <Route path="/country/:name" exact component={CountryDetail} /> */}
+          <Route path="/country/:name" exact component={CountryDetail} />
           <Route path="/prevention" exact component={Prevention} />
-          <Route path="/" component={WorldOverall} />
+          {/* <Route path="/" component={WorldOverall} /> */}
+          <Route path="/" render={(props) => <WorldOverall {...props} />} />
           {/* <Route path="/" component={Chart} /> */}
         </Switch>
 

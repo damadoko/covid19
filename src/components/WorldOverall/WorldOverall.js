@@ -10,6 +10,7 @@ import Chart from "../Chart/Chart";
 
 class WorldOverall extends Component {
   render() {
+    // console.log(this.props.history);
     return (
       <div className={classes.WorldOverall}>
         <OverallReport
@@ -20,7 +21,7 @@ class WorldOverall extends Component {
           newDeaths={this.props.overallData.deaths.new}
         />
         <Chart />
-        <Reports />
+        <Reports {...this.props} />
         <News
           newsArr={this.props.newsArr}
           newsCount={this.props.newsCount}
