@@ -1,18 +1,37 @@
 .Reports {
-  display: grid;
-  grid-template-columns: 1fr 5fr;
+  display: block;
   border: 1px solid #cccccc;
   margin: 1rem 0;
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.5) 1px 2px 3px;
   text-align: center;
+  position: relative;
 }
 
-.Reports > div:first-child {
-  text-transform: capitalize;
+.Span span:first-child {
+  position: relative;
+  font-size: 1.5rem;
   font-weight: bold;
-  white-space: nowrap;
-  transform: rotate(-90deg);
-  align-self: center;
-  z-index: -1;
+  padding: 10px;
+}
+
+.Span span:first-child::before {
+  position: absolute;
+  content: "";
+  bottom: 4px;
+  left: 0;
+  width: 50%;
+  height: 4px;
+  background-color: #c43535;
+  transition: all 0.4s ease-in;
+}
+
+.Span span:first-child:hover::before {
+  width: 100%;
+}
+
+.Span span:last-child {
+  padding: 10px 0 0 10px;
+  display: block;
+  font-size: 0.75rem;
+  color: #cccccc;
 }

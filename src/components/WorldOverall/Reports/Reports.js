@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import classes from "./Reports.module.css";
 
 import Report from "./Report/Report";
+import Aux from "../../../hoc/Aux/Aux";
 
 const Reports = (props) => {
   // const reportsData = [
@@ -30,21 +31,17 @@ const Reports = (props) => {
   // ];
 
   const reports = props.top3Country.map((ctry, index) => (
-    <Report
-      key={index}
-      country={ctry.country}
-      confirmed={ctry.cases.total}
-      recovered={ctry.cases.recovered}
-      critical={ctry.cases.critical}
-      deaths={ctry.deaths.total}
-    />
+    <Report key={index} country={ctry.country} confirmed={ctry.cases.total} />
   ));
 
   return (
-    <div className={classes.Reports}>
-      <div>Top 3 country</div>
-      <div>{reports}</div>
-    </div>
+    <Aux>
+      <div className={classes.Span}>
+        <span> HIGHEST CASES</span>
+        <span>By Country, Territory or Area</span>
+      </div>
+      <div className={classes.Reports}>{reports}</div>
+    </Aux>
   );
 };
 

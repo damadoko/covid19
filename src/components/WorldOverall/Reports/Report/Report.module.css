@@ -1,39 +1,27 @@
 .Report {
-  margin-top: 1rem;
   display: grid;
-  grid-template-areas:
-    "header header header "
-    "confirmed confirmed confirmed"
-    " recovered critical deaths ";
+  grid-template-columns: repeat(2, 1fr);
   border-bottom: 1px solid #cccccc;
+  padding: 1rem 0;
 }
 
 .Report:last-child {
   border: none;
 }
 
-.Report div {
-  padding: 0.25rem;
+.Report p:last-child {
+  color: #cccccc;
+  font-weight: bold;
+}
+
+.Report p:first-child {
+  text-align: center;
+  font-weight: bold;
 }
 
 .Report div:first-child {
+  font-size: 1.5rem;
+  font-weight: bold;
   color: red;
-  grid-area: header;
-  text-transform: capitalize;
-}
-
-.Report div:nth-child(n + 2) {
-  font-size: 0.75rem;
-}
-.Report div:nth-child(2) {
-  grid-area: confirmed;
-}
-.Report div:nth-child(3) {
-  grid-area: recovered;
-}
-.Report div:nth-child(4) {
-  grid-area: critical;
-}
-.Report div:nth-child(5) {
-  grid-area: deaths;
+  text-transform: uppercase;
 }
