@@ -5,8 +5,8 @@ import * as serviceWorker from "./serviceWorker";
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-import { BrowserRouter, Router } from "react-router-dom";
-import { createBrowserHistory } from "history";
+import { BrowserRouter } from "react-router-dom";
+// import { createBrowserHistory } from "history";
 
 import App from "./container/App";
 import reducer from "./store/reducer";
@@ -15,15 +15,15 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 
-const history = createBrowserHistory();
+// const history = createBrowserHistory();
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <Router history={history}>
-          <App />
-        </Router>
+        {/* <Router history={history}> */}
+        <App />
+        {/* </Router> */}
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

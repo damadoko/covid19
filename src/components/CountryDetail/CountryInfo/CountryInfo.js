@@ -1,62 +1,38 @@
-import React, { Fragment, Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import classes from "./CountryInfo.module.css";
-import { userSelect } from "../../../store/actions/actions";
 
-import OverallReport from "../../WorldOverall/OverallReport/OverallReport";
+import OverallReport from "../../Utilities/OverallReport/OverallReport";
+import Aux from "../../../hoc/Aux/Aux";
 
-class CountryInfo extends Component {
-  // componentDidMount() {
-  //   const currentSelectedCountry =
-  //     this.props.countryName !== undefined
-  //       ? this.props.countryName
-  //       : this.props.selectedCountry;
-  //   this.props.onUserSelect(currentSelectedCountry, this.props.sizeNews);
-  // }
-  componentDidUpdate() {}
+const CountryInfo = (props) => {
+  const { countryName, onSelectCountry, countryNameArr, selectedData } = props;
+  console.log(this.props);
+  const optionList = countryNameArr.map((opt, index) => (
+    <option key={index} value={opt}>
+      {opt}
+    </option>
+  ));
 
-  render() {
-    const { countryName, selectCountry } = this.props;
-    console.log(this.props);
-    const optionList = this.props.countryNameArr.map((opt, index) => (
-      <option key={index} value={opt}>
-        {opt}
-      </option>
-    ));
-
-    return (
-      <Fragment>
-        <div className={classes.CountryInfo}>
-          <p>Country / Region</p>
-          <select value={countryName} onChange={selectCountry}>
-            {optionList}
-          </select>
-        </div>
-        <OverallReport
-          total={this.props.selectedData.cases.total}
-          newCase={this.props.selectedData.cases.new}
-          recovered={this.props.selectedData.cases.recovered}
-          deaths={this.props.selectedData.deaths.total}
-          newDeaths={this.props.selectedData.deaths.new}
-        />
-      </Fragment>
-    );
-  }
-}
-
-const mapStateToProps = (state) => {
-  return {
-    countryNameArr: state.overall.countryNames,
-    selectedData: state.selected.selectedData,
-    sizeNews: state.selected.selectedNewsCount,
-    selectedCountry: state.selected.selectedCountry,
-  };
+  return (
+    <Aux>
+      <div className={classes.CountryInfo}>
+        <p>Country / Region</p>
+        <select
+          value={!!countryName && countryName ? countryName : `Afghanistan`}
+          onChange={onSelectCountry}
+        >
+          {optionList}
+        </select>
+      </div>
+      <OverallReport
+        total={selectedData.cases.total}
+        newCase={selectedData.cases.new}
+        recovered={selectedData.cases.recovered}
+        deaths={selectedData.deaths.total}
+        newDeaths={selectedData.deaths.new}
+      />
+    </Aux>
+  );
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onUserSelect: (name, size) => dispatch(userSelect(name, size)),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CountryInfo);
+export default CountryInfo;

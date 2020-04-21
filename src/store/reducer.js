@@ -1,3 +1,5 @@
+import * as actionTypes from "../store/actions/actionTypes";
+
 const initialState = {
   lastUpdate: null,
   defaultFetchNewsNumber: 7,
@@ -62,7 +64,7 @@ const reducer = (state = initialState, action) => {
   const currentSelectedNewsCount = state.selected.selectedNewsCount;
   // console.log(action);
   switch (action.type) {
-    case "storeOverall":
+    case actionTypes.STORE_STATISTICS:
       const allData = action.dataFetch.filter((ctry) => ctry.country === "All");
       const top3Data = action.dataFetch
         .filter(
@@ -75,11 +77,27 @@ const reducer = (state = initialState, action) => {
             ctry.country !== "Africa"
         )
         .slice(0, 3);
-      const defaultSelectedCountryData = action.dataFetch.filter(
-        (ctry) => ctry.country === state.selected.selectedCountry
-      );
 
-      // Chart data
+      return {
+        ...state,
+        lastUpdate: allData[0].time,
+        overall: {
+          ...state.overall,
+          overallData: allData[0],
+          top3Country: top3Data,
+        },
+      };
+
+    case actionTypes.STORE_WORLD_NEWS:
+      return {
+        ...state,
+        overall: {
+          ...state.overall,
+          worldHotNews: action.newsFetch,
+        },
+      };
+
+    case actionTypes.STORE_HISTORY:
       const dateArr = Object.keys(action.historyFetch)
         .map((date) => date.slice(6))
         .slice(0, 30)
@@ -89,17 +107,10 @@ const reducer = (state = initialState, action) => {
         .map((data) => data.total_cases)
         .slice(0, 30)
         .reverse();
-
       return {
         ...state,
-        lastUpdate: allData[0].time,
         overall: {
           ...state.overall,
-          overallData: allData[0],
-          top3Country: top3Data,
-          worldHotNews: action.newsFetch,
-          countryNames: action.namesFetch,
-          sortedData: action.dataFetch,
           worldChartData: {
             ...state.overall.worldChartData,
             labels: dateArr,
@@ -111,12 +122,73 @@ const reducer = (state = initialState, action) => {
             ],
           },
         },
-        selected: {
-          ...state.selected,
-          selectedData: defaultSelectedCountryData[0],
+      };
+
+    case actionTypes.STORE_COUNTRY_NAME:
+      return {
+        ...state,
+        overall: {
+          ...state.overall,
+          countryNames: action.namesFetch,
         },
       };
-    case "userSelectCountry":
+
+    // case "storeOverall":
+    //   const allData = action.dataFetch.filter((ctry) => ctry.country === "All");
+    //   const top3Data = action.dataFetch
+    //     .filter(
+    //       (ctry) =>
+    //         ctry.country !== "All" &&
+    //         ctry.country !== "Europe" &&
+    //         ctry.country !== "Asia" &&
+    //         ctry.country !== "North-America" &&
+    //         ctry.country !== "South-America" &&
+    //         ctry.country !== "Africa"
+    //     )
+    //     .slice(0, 3);
+    //   const defaultSelectedCountryData = action.dataFetch.filter(
+    //     (ctry) => ctry.country === state.selected.selectedCountry
+    //   );
+
+    //   // Chart data
+    //   const dateArr = Object.keys(action.historyFetch)
+    //     .map((date) => date.slice(6))
+    //     .slice(0, 30)
+    //     .reverse();
+
+    //   const dataArr = Object.values(action.historyFetch)
+    //     .map((data) => data.total_cases)
+    //     .slice(0, 30)
+    //     .reverse();
+
+    //   return {
+    //     ...state,
+    //     lastUpdate: allData[0].time,
+    //     overall: {
+    //       ...state.overall,
+    //       overallData: allData[0],
+    //       top3Country: top3Data,
+    //       worldHotNews: action.newsFetch,
+    //       countryNames: action.namesFetch,
+    //       sortedData: action.dataFetch,
+    //       worldChartData: {
+    //         ...state.overall.worldChartData,
+    //         labels: dateArr,
+    //         datasets: [
+    //           ...state.overall.worldChartData.datasets.filter(
+    //             (item) => item.label !== "Cases"
+    //           ),
+    //           { label: "Cases", data: dataArr },
+    //         ],
+    //       },
+    //     },
+    //     selected: {
+    //       ...state.selected,
+    //       selectedData: defaultSelectedCountryData[0],
+    //     },
+    //   };
+
+    case actionTypes.SELECT_COUNTRY:
       const defaultData = {
         cases: { new: 0, total: 0, recovered: 0 },
         deaths: { total: 0, new: 0 },

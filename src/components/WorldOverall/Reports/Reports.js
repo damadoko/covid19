@@ -10,17 +10,15 @@ const Reports = (props) => {
   const { history, top3Country } = props;
   // console.log(top3Country);
 
-  const test = (type) => {
-    console.log(type);
+  const onSelectCountry = (name) => {
     history.push({
-      pathname: `/country/${type}`,
+      pathname: `/country/${name}`,
     });
-    // history.push(`google.com`);
   };
 
   const reports = top3Country.map((ctry, index) => (
     // <Link to={"/country/" + ctry.country} key={index}>
-    <div onClick={() => test(ctry.country)} key={index}>
+    <div onClick={() => onSelectCountry(ctry.country)} key={index}>
       <Report country={ctry.country} confirmed={ctry.cases.total} />
     </div>
     // </Link>

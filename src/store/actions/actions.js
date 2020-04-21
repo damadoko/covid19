@@ -1,24 +1,37 @@
-import axios from "axios";
+import * as actionTypes from "./actionTypes";
 
-export const fetchNews = (name, newsDataArr) => {
+export const storeCountryNews = (name, newsDataArr) => {
   return {
-    type: "userSelectCountry",
+    type: actionTypes.STORE_COUNTRY_NEWS,
     countryName: name,
     countryNews: newsDataArr,
   };
 };
 
-export const userSelect = (name, size) => {
-  return async (dispatch) => {
-    // Fetch News data
-    const APIKey = "a0e915657c944848b87ab3fbf85cf5a4";
-    const today = new Date().toISOString().slice(0, 10);
-    const newsSize = size;
-    const newsData = await axios({
-      method: "GET",
-      url: `https://newsapi.org/v2/everything?q=COVID ${name}&from=${today}&sortBy=publishedAt&apiKey=${APIKey}&pageSize=${newsSize}&page=1`,
-    });
-    const newsDataArr = await newsData.data.articles;
-    await dispatch(fetchNews(name, newsDataArr));
+export const storeWorldNews = (news) => {
+  return {
+    type: actionTypes.STORE_WORLD_NEWS,
+    newsFetch: news,
+  };
+};
+
+export const storeCountryData = (data) => {
+  return {
+    type: actionTypes.STORE_STATISTICS,
+    dataFetch: data,
+  };
+};
+
+export const storeCountryName = (name) => {
+  return {
+    type: actionTypes.STORE_COUNTRY_NAME,
+    namesFetch: name,
+  };
+};
+
+export const storeWorldHistory = (history) => {
+  return {
+    type: actionTypes.STORE_HISTORY,
+    historyFetch: history,
   };
 };

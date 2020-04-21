@@ -3,14 +3,20 @@ import { connect } from "react-redux";
 
 import classes from "./WorldOverall.module.css";
 
-import OverallReport from "./OverallReport/OverallReport";
+import OverallReport from "../Utilities/OverallReport/OverallReport";
 import Reports from "./Reports/Reports";
-import News from "./News/News";
-import Chart from "../Chart/Chart";
+import News from "../Utilities/News/News";
+import Chart from "../Utilities/Chart/Chart";
+import * as actionCreators from "../../store/actions/index";
 
 class WorldOverall extends Component {
+  componentDidMount() {
+    this.props.fetchWorldData();
+    this.props.fetchWorldNews();
+    this.props.fetchWorldHistory();
+  }
+
   render() {
-    // console.log(this.props.history);
     return (
       <div className={classes.WorldOverall}>
         <OverallReport
@@ -45,6 +51,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onMoreNews: () => dispatch({ type: "moreNews", location: "world" }),
     onHideNews: () => dispatch({ type: "hideNews", location: "world" }),
+    fetchWorldData: () => dispatch(actionCreators.fetchStatistics()),
+    fetchWorldNews: () => dispatch(actionCreators.fetchNews(null, 7)),
+    fetchWorldHistory: () => dispatch(actionCreators.fetchWorldHistory()),
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(WorldOverall);
