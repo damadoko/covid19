@@ -8,9 +8,20 @@ import * as actionCreators from "../../store/actions/index";
 
 class CountryDetail extends Component {
   componentDidMount() {
-    this.props.FetchWorldNames();
-    this.props.onUserSelect(this.props.selectCountry, 7);
+    // actionCreators.fetchInitCountryData(this.props.match.params.name, 7);
+    this.props.fetchWorldNames();
+    this.props.onUserSelect(this.props.match.params.name, 7);
   }
+
+  // componentDidUpdate() {
+  // }
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log(nextProps.selectCountry);
+  //   console.log(this.props.match.params.name);
+  //   return nextProps.selectCountry !== this.props.match.params.name;
+  //   // return false;
+  // }
 
   render() {
     const {
@@ -26,7 +37,9 @@ class CountryDetail extends Component {
       onHideNews,
     } = this.props;
 
-    const selectCountry = (e) => {
+    // console.log(this.props);
+
+    const onSelectCountry = (e) => {
       history.push({
         pathname: `/country/${e.target.value}`,
       });
@@ -37,7 +50,7 @@ class CountryDetail extends Component {
       <div className={classes.CountryDetail}>
         <CountryInfo
           countryName={match.params.name}
-          onSelectCountry={selectCountry}
+          onSelectCountry={onSelectCountry}
           countryNameArr={countryNameArr}
           selectedData={selectedData}
         />
@@ -56,7 +69,7 @@ const mapStateToProps = (state) => {
   return {
     newsArr: state.selected.selectedHotNews,
     newsCount: state.selected.selectedNewsCount,
-    sizeNews: state.selected.selectedNewsCount,
+    sizeNews: state.selected.defaultFetchNewsNumber,
     countryNameArr: state.overall.countryNames,
     selectedData: state.selected.selectedData,
     selectCountry: state.selected.selectedCountry,
@@ -65,11 +78,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onMoreNews: () => dispatch({ type: "moreNews", location: "selected" }),
-    onHideNews: () => dispatch({ type: "hideNews", location: "selected" }),
+    onMoreNews: () => dispatch(actionCreators.onMoreNews("selected")),
+    onHideNews: () => dispatch(actionCreators.onHideNews("selected")),
     onUserSelect: (name, size) =>
       dispatch(actionCreators.fetchNews(name, size)),
-    FetchWorldNames: () => dispatch(actionCreators.fetchCountryName()),
+    fetchWorldNames: () => dispatch(actionCreators.fetchCountryName()),
+    fetchInitData: () => dispatch(actionCreators.fetchInitCountryData),
   };
 };
 

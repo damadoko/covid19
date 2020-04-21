@@ -6,7 +6,7 @@ import Article from "./Article/Article";
 import HighLight from "./HighLight/HighLight";
 
 const News = (props) => {
-  const { newsArr, newsCount, moreNews, hideNews } = props;
+  const { newsArr, newsCount, moreNews, hideNews, newsSize } = props;
 
   const noDataArr = [
     {
@@ -21,7 +21,7 @@ const News = (props) => {
   const newsProcessingArr = newsArr.length === 0 ? noDataArr : newsArr;
 
   const highLightData = newsProcessingArr.slice(0, 1);
-  // console.log(highLightData[0].source.name);
+
   const news = newsProcessingArr
     .slice(1, newsCount)
     .map((item, index) => (
@@ -48,7 +48,7 @@ const News = (props) => {
         src={highLightData[0].source.name}
       />
       <div>{news}</div>
-      {newsCount === props.newsSize ? (
+      {newsCount === newsSize ? (
         <span onClick={hideNews}>HIDE</span>
       ) : (
         <span onClick={moreNews}>SEE MORE</span>

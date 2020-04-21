@@ -3,6 +3,7 @@ export {
   fetchNews,
   fetchCountryName,
   fetchWorldHistory,
+  fetchInitCountryData,
 } from "./asyncActions";
 
 export {
@@ -11,4 +12,6 @@ export {
   storeCountryNews,
   storeWorldHistory,
   storeWorldNews,
+  onMoreNews,
+  onHideNews,
 } from "./actions";

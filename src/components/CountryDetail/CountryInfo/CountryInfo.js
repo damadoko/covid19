@@ -6,7 +6,7 @@ import Aux from "../../../hoc/Aux/Aux";
 
 const CountryInfo = (props) => {
   const { countryName, onSelectCountry, countryNameArr, selectedData } = props;
-  console.log(this.props);
+  // console.log(props);
   const optionList = countryNameArr.map((opt, index) => (
     <option key={index} value={opt}>
       {opt}

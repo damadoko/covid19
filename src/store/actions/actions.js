@@ -35,3 +35,17 @@ export const storeWorldHistory = (history) => {
     historyFetch: history,
   };
 };
+
+export const onMoreNews = (locate) => {
+  return {
+    type: actionTypes.MORE_NEWS,
+    location: locate,
+  };
+};
+
+export const onHideNews = (locate) => {
+  return {
+    type: actionTypes.HIDE_NEWS,
+    location: locate,
+  };
+};

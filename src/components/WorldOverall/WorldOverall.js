@@ -11,7 +11,6 @@ import * as actionCreators from "../../store/actions/index";
 
 class WorldOverall extends Component {
   componentDidMount() {
-    this.props.fetchWorldData();
     this.props.fetchWorldNews();
     this.props.fetchWorldHistory();
   }
@@ -49,9 +48,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onMoreNews: () => dispatch({ type: "moreNews", location: "world" }),
-    onHideNews: () => dispatch({ type: "hideNews", location: "world" }),
-    fetchWorldData: () => dispatch(actionCreators.fetchStatistics()),
+    onMoreNews: () => dispatch(actionCreators.onMoreNews("world")),
+    onHideNews: () => dispatch(actionCreators.onHideNews("world")),
     fetchWorldNews: () => dispatch(actionCreators.fetchNews(null, 7)),
     fetchWorldHistory: () => dispatch(actionCreators.fetchWorldHistory()),
   };

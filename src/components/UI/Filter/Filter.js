@@ -15,7 +15,7 @@ const Filter = (props) => {
         OVERVIEW
         <span />
       </NavLink>{" "}
-      <NavLink to="/country" activeClassName={classes.active}>
+      <NavLink to="/country/Vietnam" activeClassName={classes.active}>
         EXPLORER
         <span />
       </NavLink>

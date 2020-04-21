@@ -26,7 +26,7 @@ const Menu = () => {
       </div>
       <div>
         <NavLink
-          to="/country"
+          to="/country/Vietnam"
           className={classes.NavLink}
           activeClassName={classes.active}
         >

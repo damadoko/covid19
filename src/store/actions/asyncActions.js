@@ -3,7 +3,23 @@ import * as actions from "./actions";
 
 export const fetchNews = (name, size) => {
   return async (dispatch) => {
+    const worldData = await axios({
+      method: "GET",
+      url: "https://covid-193.p.rapidapi.com/statistics",
+      headers: {
+        "content-type": "application/octet-stream",
+        "x-rapidapi-host": "covid-193.p.rapidapi.com",
+        "x-rapidapi-key": "0feb686e78mshebefdcd7b5fe8abp127a2cjsnabf42285f2bd",
+      },
+    });
+    const worldDataArr = await worldData.data.response;
+    const sortedData = await worldDataArr.sort(
+      (a, b) => b.cases.total - a.cases.total
+    );
+    await dispatch(actions.storeCountryData(sortedData));
+    // await fetchStatistics();
     // Fetch News data
+
     const APIKey = "a0e915657c944848b87ab3fbf85cf5a4";
     const today = new Date().toISOString().slice(0, 10);
     const newsSize = size;
@@ -68,4 +84,12 @@ export const fetchWorldHistory = () => {
     const worldHistoryData = await worldHistory.data.data;
     await dispatch(actions.storeWorldHistory(worldHistoryData));
   };
+};
+
+export const fetchInitCountryData = async (name, size) => {
+  // return async dispatch => {
+  await fetchStatistics();
+  await fetchCountryName();
+  await fetchNews(name, size);
+  // }
 };

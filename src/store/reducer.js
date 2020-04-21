@@ -85,6 +85,7 @@ const reducer = (state = initialState, action) => {
           ...state.overall,
           overallData: allData[0],
           top3Country: top3Data,
+          sortedData: action.dataFetch,
         },
       };
 
@@ -133,62 +134,7 @@ const reducer = (state = initialState, action) => {
         },
       };
 
-    // case "storeOverall":
-    //   const allData = action.dataFetch.filter((ctry) => ctry.country === "All");
-    //   const top3Data = action.dataFetch
-    //     .filter(
-    //       (ctry) =>
-    //         ctry.country !== "All" &&
-    //         ctry.country !== "Europe" &&
-    //         ctry.country !== "Asia" &&
-    //         ctry.country !== "North-America" &&
-    //         ctry.country !== "South-America" &&
-    //         ctry.country !== "Africa"
-    //     )
-    //     .slice(0, 3);
-    //   const defaultSelectedCountryData = action.dataFetch.filter(
-    //     (ctry) => ctry.country === state.selected.selectedCountry
-    //   );
-
-    //   // Chart data
-    //   const dateArr = Object.keys(action.historyFetch)
-    //     .map((date) => date.slice(6))
-    //     .slice(0, 30)
-    //     .reverse();
-
-    //   const dataArr = Object.values(action.historyFetch)
-    //     .map((data) => data.total_cases)
-    //     .slice(0, 30)
-    //     .reverse();
-
-    //   return {
-    //     ...state,
-    //     lastUpdate: allData[0].time,
-    //     overall: {
-    //       ...state.overall,
-    //       overallData: allData[0],
-    //       top3Country: top3Data,
-    //       worldHotNews: action.newsFetch,
-    //       countryNames: action.namesFetch,
-    //       sortedData: action.dataFetch,
-    //       worldChartData: {
-    //         ...state.overall.worldChartData,
-    //         labels: dateArr,
-    //         datasets: [
-    //           ...state.overall.worldChartData.datasets.filter(
-    //             (item) => item.label !== "Cases"
-    //           ),
-    //           { label: "Cases", data: dataArr },
-    //         ],
-    //       },
-    //     },
-    //     selected: {
-    //       ...state.selected,
-    //       selectedData: defaultSelectedCountryData[0],
-    //     },
-    //   };
-
-    case actionTypes.SELECT_COUNTRY:
+    case actionTypes.STORE_COUNTRY_NEWS:
       const defaultData = {
         cases: { new: 0, total: 0, recovered: 0 },
         deaths: { total: 0, new: 0 },
@@ -196,7 +142,6 @@ const reducer = (state = initialState, action) => {
       const selectedCountryData = state.overall.sortedData.filter(
         (ctry) => ctry.country === action.countryName
       );
-      // console.log(action);
       return {
         ...state,
         selected: {
@@ -206,6 +151,8 @@ const reducer = (state = initialState, action) => {
               ? selectedCountryData[0]
               : defaultData,
           selectedHotNews: action.countryNews,
+          selectedCountry: action.countryName,
+          selectedNewsCount: 3,
         },
       };
 
