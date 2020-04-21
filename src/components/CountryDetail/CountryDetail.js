@@ -8,20 +8,9 @@ import * as actionCreators from "../../store/actions/index";
 
 class CountryDetail extends Component {
   componentDidMount() {
-    // actionCreators.fetchInitCountryData(this.props.match.params.name, 7);
     this.props.fetchWorldNames();
-    this.props.onUserSelect(this.props.match.params.name, 7);
+    this.props.onUserSelect(this.props.match.params.name, this.props.sizeNews);
   }
-
-  // componentDidUpdate() {
-  // }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   console.log(nextProps.selectCountry);
-  //   console.log(this.props.match.params.name);
-  //   return nextProps.selectCountry !== this.props.match.params.name;
-  //   // return false;
-  // }
 
   render() {
     const {
@@ -36,8 +25,6 @@ class CountryDetail extends Component {
       onMoreNews,
       onHideNews,
     } = this.props;
-
-    // console.log(this.props);
 
     const onSelectCountry = (e) => {
       history.push({

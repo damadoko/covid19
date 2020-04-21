@@ -1,4 +1,5 @@
 import React from "react";
+
 import classes from "./HighLight.module.css";
 
 const HighLight = (props) => {

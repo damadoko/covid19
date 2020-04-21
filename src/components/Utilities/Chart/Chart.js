@@ -6,10 +6,11 @@ import classes from "./Chart.module.css";
 
 class Chart extends Component {
   render() {
+    const { data } = this.props;
     return (
       <div className={classes.Chart}>
         <Bar
-          data={this.props.data}
+          data={data}
           // width={100}
           // height={50}
           options={{

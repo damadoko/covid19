@@ -1,20 +1,15 @@
 import React from "react";
-import classes from "./Filter.module.css";
 import { NavLink } from "react-router-dom";
 
+import classes from "./Filter.module.css";
+
 const Filter = (props) => {
-  // const filterArr = ["ALL", "TODAY", "YESTERDAY"];
-  // const filterBar = filterArr.map((item, index) => (
-  //   <div key={index} data-active="false">
-  //     {item}
-  //   </div>
-  // ));
   return (
     <div className={classes.Filter}>
-      <NavLink to="/" exact activeClassName={classes.active}>
+      <NavLink to="/home" exact activeClassName={classes.active}>
         OVERVIEW
         <span />
-      </NavLink>{" "}
+      </NavLink>
       <NavLink to="/country/Vietnam" activeClassName={classes.active}>
         EXPLORER
         <span />

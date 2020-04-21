@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import classes from "./WorldOverall.module.css";
-
 import OverallReport from "../Utilities/OverallReport/OverallReport";
 import Reports from "./Reports/Reports";
 import News from "../Utilities/News/News";
@@ -16,22 +15,29 @@ class WorldOverall extends Component {
   }
 
   render() {
+    const {
+      overallData,
+      newsArr,
+      newsCount,
+      onMoreNews,
+      onHideNews,
+    } = this.props;
     return (
       <div className={classes.WorldOverall}>
         <OverallReport
-          total={this.props.overallData.cases.total}
-          newCase={this.props.overallData.cases.new}
-          recovered={this.props.overallData.cases.recovered}
-          deaths={this.props.overallData.deaths.total}
-          newDeaths={this.props.overallData.deaths.new}
+          total={overallData.cases.total}
+          newCase={overallData.cases.new}
+          recovered={overallData.cases.recovered}
+          deaths={overallData.deaths.total}
+          newDeaths={overallData.deaths.new}
         />
         <Chart />
         <Reports {...this.props} />
         <News
-          newsArr={this.props.newsArr}
-          newsCount={this.props.newsCount}
-          moreNews={this.props.onMoreNews}
-          hideNews={this.props.onHideNews}
+          newsArr={newsArr}
+          newsCount={newsCount}
+          moreNews={onMoreNews}
+          hideNews={onHideNews}
         />
       </div>
     );

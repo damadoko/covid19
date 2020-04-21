@@ -156,7 +156,7 @@ const reducer = (state = initialState, action) => {
         },
       };
 
-    case "moreNews":
+    case actionTypes.MORE_NEWS:
       return {
         ...state,
         overall: {
@@ -175,7 +175,7 @@ const reducer = (state = initialState, action) => {
         },
       };
 
-    case "hideNews":
+    case actionTypes.HIDE_NEWS:
       return {
         ...state,
         overall: {

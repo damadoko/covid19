@@ -1,6 +1,6 @@
 import React from "react";
-import classes from "./Layout.module.css";
 
+import classes from "./Layout.module.css";
 import Logo from "../../components/UI/Logo/Logo";
 import Menu from "../../components/UI/Menu/Menu";
 import Filter from "../../components/UI/Filter/Filter";

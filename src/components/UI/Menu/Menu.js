@@ -1,7 +1,5 @@
 import React from "react";
-import classes from "./Menu.module.css";
 import { NavLink } from "react-router-dom";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faGlobeAmericas,
@@ -9,6 +7,8 @@ import {
   faChartBar,
   faPumpMedical,
 } from "@fortawesome/free-solid-svg-icons";
+
+import classes from "./Menu.module.css";
 
 const Menu = () => {
   return (
