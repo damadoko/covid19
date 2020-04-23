@@ -28,7 +28,7 @@ class CountryDetail extends Component {
 
     const onSelectCountry = (e) => {
       history.push({
-        pathname: `/country/${e.target.value}`,
+        pathname: `/covid19/country/${e.target.value}`,
       });
       onUserSelect(e.target.value, sizeNews);
     };

@@ -15,7 +15,7 @@ const Menu = () => {
     <div className={classes.Menu}>
       <div>
         <NavLink
-          to="/"
+          to="/covid19/home"
           exact
           className={classes.NavLink}
           activeClassName={classes.active}
@@ -26,7 +26,7 @@ const Menu = () => {
       </div>
       <div>
         <NavLink
-          to="/country/Vietnam"
+          to="/covid19/country/Vietnam"
           className={classes.NavLink}
           activeClassName={classes.active}
         >
@@ -36,7 +36,7 @@ const Menu = () => {
       </div>
       <div>
         <NavLink
-          to="/chart"
+          to="/covid19/chart"
           className={classes.NavLink}
           activeClassName={classes.active}
         >
@@ -46,7 +46,7 @@ const Menu = () => {
       </div>
       <div>
         <NavLink
-          to="/prevention"
+          to="/covid19/prevention"
           className={classes.NavLink}
           activeClassName={classes.active}
         >

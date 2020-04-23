@@ -11,12 +11,15 @@ const App = (props) => {
   return (
     <Layout>
       <Switch>
-        <Route path="/chart" component={Chart} />
-        <Route path="/country" exact component={CountryDetail} />
-        <Route path="/country/:name" exact component={CountryDetail} />
-        <Route path="/prevention" exact component={Prevention} />
-        <Route path="/home" render={(props) => <WorldOverall {...props} />} />
-        <Redirect from="/" to="/home" />
+        <Route path="/covid19/chart" exact component={Chart} />
+        <Route path="/covid19/country" exact component={CountryDetail} />
+        <Route path="/covid19/country/:name" exact component={CountryDetail} />
+        <Route path="/covid19/prevention" exact component={Prevention} />
+        <Route
+          path="/covid19/home"
+          render={(props) => <WorldOverall {...props} />}
+        />
+        <Redirect from="/" to="/covid19/home" />
       </Switch>
     </Layout>
   );

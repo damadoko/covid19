@@ -10,7 +10,7 @@ const Reports = (props) => {
 
   const onSelectCountry = (name) => {
     history.push({
-      pathname: `/country/${name}`,
+      pathname: `/covid19/country/${name}`,
     });
   };
 
