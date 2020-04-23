@@ -23,14 +23,21 @@ export const fetchNews = (name, size) => {
     const APIKey = "a0e915657c944848b87ab3fbf85cf5a4";
     const today = new Date().toISOString().slice(0, 10);
     const newsSize = size;
-    const newsData = await axios({
-      method: "GET",
-      url: `https://newsapi.org/v2/everything?q=COVID ${name}&from=${today}&sortBy=publishedAt&apiKey=${APIKey}&pageSize=${newsSize}&page=1`,
-    });
-    const newsDataArr = await newsData.data.articles;
-    name
-      ? await dispatch(actions.storeCountryNews(name, newsDataArr))
-      : await dispatch(actions.storeWorldNews(newsDataArr));
+    if (name) {
+      const newsData = await axios({
+        method: "GET",
+        url: `https://newsapi.org/v2/everything?q=COVID ${name}&from=${today}&sortBy=publishedAt&apiKey=${APIKey}&pageSize=${newsSize}&page=1`,
+      });
+      const newsDataArr = await newsData.data.articles;
+      await dispatch(actions.storeCountryNews(name, newsDataArr));
+    } else {
+      const newsData = await axios({
+        method: "GET",
+        url: `https://newsapi.org/v2/everything?q=COVID&from=${today}&sortBy=publishedAt&apiKey=${APIKey}&pageSize=${newsSize}&page=1`,
+      });
+      const newsDataArr = await newsData.data.articles;
+      await dispatch(actions.storeWorldNews(newsDataArr));
+    }
   };
 };
 

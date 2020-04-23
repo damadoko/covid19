@@ -1,11 +1,6 @@
 .Logo {
-  position: relative;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 485px;
+  width: 100%;
   z-index: 2;
-  height: 70px;
   padding: 1rem 2rem;
   background-color: #f2f2f2;
 }
@@ -13,13 +8,13 @@
 .LogoFixed {
   position: sticky;
   top: 0px;
-  height: 90px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: #cccccc;
   color: #f2f2f2;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
   z-index: 2;
 }
 
@@ -28,14 +23,34 @@
   padding: 0.25rem 0.5rem;
   color: #f2f2f2;
   background-color: #c43535;
-  font-size: 1rem;
-  position: absolute;
-  top: 0rem;
-  left: 5rem;
 }
 
 .LogoFixed span {
-  position: absolute;
-  bottom: 4px;
-  font-size: 0.75rem;
+  font-size: 0.25rem;
+}
+
+@media (min-width: 480px) {
+  .Logo {
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 480px;
+  }
+
+  .LogoFixed {
+    padding: 2rem;
+  }
+
+  .LogoFixed p {
+    position: absolute;
+    top: 0rem;
+    left: 5rem;
+  }
+
+  .LogoFixed span {
+    position: absolute;
+    bottom: 4px;
+    font-size: 0.75rem;
+  }
 }

@@ -90,6 +90,7 @@ const reducer = (state = initialState, action) => {
       };
 
     case actionTypes.STORE_WORLD_NEWS:
+      console.log(action.newsFetch);
       return {
         ...state,
         overall: {

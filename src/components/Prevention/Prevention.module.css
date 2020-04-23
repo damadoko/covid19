@@ -96,8 +96,8 @@
 
 .Prevention ul li:last-child span:last-child {
   position: absolute;
-  top: 0;
-  right: -6rem;
+  top: -4rem;
+  right: -1rem;
   font-size: 5rem;
   border: 5px solid #c43535;
   height: 100px;
@@ -105,4 +105,11 @@
   border-radius: 100%;
   text-align: center;
   font-weight: bold;
+}
+
+@media (min-width: 480px) {
+  .Prevention ul li:last-child span:last-child {
+    top: 0rem;
+    right: -6rem;
+  }
 }

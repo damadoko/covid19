@@ -56,7 +56,7 @@ const mapStateToProps = (state) => {
   return {
     newsArr: state.selected.selectedHotNews,
     newsCount: state.selected.selectedNewsCount,
-    sizeNews: state.selected.defaultFetchNewsNumber,
+    sizeNews: state.defaultFetchNewsNumber,
     countryNameArr: state.overall.countryNames,
     selectedData: state.selected.selectedData,
     selectCountry: state.selected.selectedCountry,

@@ -1,11 +1,19 @@
 .Layout {
-  max-width: 485px;
+  width: 100%;
+  height: auto;
   margin: 0px auto;
   box-sizing: border-box;
   position: relative;
 }
 
 .Layout main {
+  max-width: 480px;
+  margin: auto;
   margin-bottom: 70px;
-  /* height: calc(100vh - 140px); */
+}
+
+@media (min-width: 480px) {
+  .Layout {
+    max-width: 480px;
+  }
 }

@@ -1,10 +1,12 @@
 .Article {
   display: grid;
   grid-template-areas:
-    "img img author author "
-    "img img title title "
-    "img img time time"
-    "img img des des";
+    "img img img img "
+    "time time time time"
+    "title title title title"
+    "author author author author"
+    "des des des des";
+
   padding: 0.5rem;
   margin: 0.5rem 0;
   border-bottom: 1px solid #cccccc;
@@ -19,7 +21,6 @@
   text-decoration: none;
   color: black;
   font-weight: bold;
-  /* font-size: ; */
 }
 
 .Article p {
@@ -33,9 +34,8 @@
   /* background: transparent; Optional: just make scrollbar invisible */
 }
 .Article img {
-  max-width: 200px;
-  max-height: 200px;
-  padding-right: 0.5rem;
+  width: 100%;
+
   grid-area: img;
 }
 
@@ -48,4 +48,20 @@
   grid-area: time;
   font-size: 0.5rem;
   color: #cccccc;
+}
+
+@media (min-width: 480px) {
+  .Article {
+    grid-template-areas:
+      "img img author author "
+      "img img title title "
+      "img img time time"
+      "img img des des";
+  }
+
+  .Article img {
+    max-width: 200px;
+    max-height: 200px;
+    padding-right: 0.5rem;
+  }
 }

@@ -3,8 +3,12 @@ import { Bar } from "react-chartjs-2";
 import { connect } from "react-redux";
 
 import classes from "./Chart.module.css";
+import * as actionCreators from "../../../store/actions/index";
 
 class Chart extends Component {
+  componentDidMount() {
+    this.props.fetchWorldHistory();
+  }
   render() {
     const { data } = this.props;
     return (
@@ -24,6 +28,7 @@ class Chart extends Component {
               display: true,
               position: "bottom",
             },
+            maintainAspectRatio: false,
           }}
         />
       </div>
@@ -37,4 +42,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, null)(Chart);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchWorldHistory: () => dispatch(actionCreators.fetchWorldHistory()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Chart);
