@@ -49,3 +49,17 @@ export const onHideNews = (locate) => {
     location: locate,
   };
 };
+
+export const showLoading = () => {
+  return {
+    type: actionTypes.SHOW_LOADING,
+    status: true,
+  };
+};
+
+export const hideLoading = () => {
+  return {
+    type: actionTypes.HIDE_LOADING,
+    status: false,
+  };
+};

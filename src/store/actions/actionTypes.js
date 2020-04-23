@@ -7,3 +7,5 @@ export const STORE_COUNTRY_NEWS = "storeCountryNews";
 export const SELECT_COUNTRY = "userSelectCountry";
 export const MORE_NEWS = "moreNews";
 export const HIDE_NEWS = "hideNews";
+export const SHOW_LOADING = "showLoading";
+export const HIDE_LOADING = "hideLoading";

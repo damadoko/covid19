@@ -3,6 +3,7 @@ import * as actions from "./actions";
 
 export const fetchNews = (name, size) => {
   return async (dispatch) => {
+    dispatch(actions.showLoading());
     const worldData = await axios({
       method: "GET",
       url: "https://covid-193.p.rapidapi.com/statistics",
@@ -38,6 +39,7 @@ export const fetchNews = (name, size) => {
       const newsDataArr = await newsData.data.articles;
       await dispatch(actions.storeWorldNews(newsDataArr));
     }
+    await dispatch(actions.hideLoading());
   };
 };
 

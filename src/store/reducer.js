@@ -3,6 +3,7 @@ import * as actionTypes from "../store/actions/actionTypes";
 const initialState = {
   lastUpdate: null,
   defaultFetchNewsNumber: 7,
+  loadingStatus: null,
   overall: {
     sortedData: [
       {
@@ -189,6 +190,18 @@ const reducer = (state = initialState, action) => {
           selectedNewsCount:
             action.location === "selected" ? 3 : currentSelectedNewsCount,
         },
+      };
+
+    case actionTypes.SHOW_LOADING:
+      return {
+        ...state,
+        loadingStatus: action.status,
+      };
+
+    case actionTypes.HIDE_LOADING:
+      return {
+        ...state,
+        loadingStatus: action.status,
       };
     default:
       return state;

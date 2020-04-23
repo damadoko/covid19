@@ -13,3 +13,7 @@
   height: 40px;
   border-radius: 10px !important;
 }
+
+.CountryInfo select:focus {
+  outline: none;
+}
