@@ -10,8 +10,9 @@ import * as actionCreators from "../../store/actions/index";
 
 class WorldOverall extends Component {
   componentDidMount() {
-    this.props.fetchWorldNews();
-    this.props.fetchWorldHistory();
+    const { fetchWorldNews, fetchWorldHistory } = this.props;
+    fetchWorldNews();
+    fetchWorldHistory();
   }
 
   render() {

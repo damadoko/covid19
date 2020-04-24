@@ -10,7 +10,7 @@ const Filter = (props) => {
         OVERVIEW
         <span />
       </NavLink>
-      <NavLink to="/covid19/country/Vietnam" activeClassName={classes.active}>
+      <NavLink to="/covid19/country/" activeClassName={classes.active}>
         EXPLORER
         <span />
       </NavLink>

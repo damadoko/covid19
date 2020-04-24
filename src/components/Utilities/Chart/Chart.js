@@ -7,7 +7,8 @@ import * as actionCreators from "../../../store/actions/index";
 
 class Chart extends Component {
   componentDidMount() {
-    this.props.fetchWorldHistory();
+    const { fetchWorldHistory } = this.props;
+    fetchWorldHistory();
   }
   render() {
     const { data } = this.props;

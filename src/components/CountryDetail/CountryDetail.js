@@ -8,8 +8,9 @@ import * as actionCreators from "../../store/actions/index";
 
 class CountryDetail extends Component {
   componentDidMount() {
-    this.props.fetchWorldNames();
-    this.props.onUserSelect(this.props.match.params.name, this.props.sizeNews);
+    const { onUserSelect, fetchCountryName, match, sizeNews } = this.props;
+    fetchCountryName();
+    onUserSelect(match.params.name, sizeNews);
   }
 
   render() {
